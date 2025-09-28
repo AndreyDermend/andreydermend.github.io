@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Healthcare SQL Joins Demo",
+    "about": "Relational schema + seed + joins with CI.",
+    "tags": ["SQL","SQLite","ERD","CI"],
+    "repo": "https://github.com/AndreyDermend/healthcare-sql-joins-demo",
+    "page": "/projects/healthcare-sql-joins-demo.html"
+  }
+]

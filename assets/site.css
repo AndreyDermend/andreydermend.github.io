@@ -1,0 +1,9 @@
+body{font-family:Inter,system-ui,Arial;margin:0;background:#0e0f12;color:#e5e7eb}
+header{border-bottom:1px solid #1f2330;background:#111319}
+nav{max-width:960px;margin:0 auto;padding:14px;display:flex;gap:16px}
+nav a{color:#93c5fd;text-decoration:none}
+main{max-width:960px;margin:0 auto;padding:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:#13151a;border:1px solid #1f2330;border-radius:14px;padding:16px}
+.tag{font-size:12px;padding:4px 8px;border:1px solid #2a2f3f;border-radius:999px;color:#bec7e1;margin-right:6px}
+.link{color:#93c5fd}

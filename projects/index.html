@@ -1,0 +1,27 @@
+<!doctype html><html><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Projects – Andrey</title>
+<link rel="stylesheet" href="/assets/site.css">
+</head><body>
+<header><nav>
+  <a href="/">Home</a>
+  <a href="/projects/">Projects</a>
+  <a href="/skills/">Skills</a>
+</nav></header>
+<main>
+  <h1>Projects</h1>
+  <div id="list" class="grid"></div>
+</main>
+<script type="module">
+  const res = await fetch('/projects/projects.json');
+  const list = await res.json();
+  const grid = document.getElementById('list');
+  grid.innerHTML = list.map(p => `
+    <article class="card">
+      <h3>${p.name}</h3>
+      <p>${p.about}</p>
+      <p class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</p>
+      <p><a href="${p.page}" class="link">Project page →</a> · <a href="${p.repo}" class="link" target="_blank">Repo →</a></p>
+    </article>`).join('');
+</script>
+</body></html>
