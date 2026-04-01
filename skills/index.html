@@ -1,20 +1,46 @@
-<!doctype html><html><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Skills – Andrey</title>
-<link rel="stylesheet" href="/assets/site.css">
-</head><body>
-<header><nav>
-  <a href="/">Home</a>
-  <a href="/projects/">Projects</a>
-  <a href="/skills/">Skills</a>
-</nav></header>
-<main>
-  <h1>Skills</h1>
-  <ul>
-    <li>Frontend: HTML/CSS/JS, Angular/React</li>
-    <li>Backend: Node.js/Express</li>
-    <li>Databases: SQL (SQLite, Postgres basics)</li>
-    <li>DevOps: GitHub Actions, Docker (learning), CI/CD</li>
-  </ul>
-</main>
-</body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Skills — Andrey Dermendzhiev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+</head>
+<body>
+<div id="progress-bar"></div><div id="cursor"></div><div id="cursor-ring"></div>
+<nav>
+  <a href="/" class="nav-logo">Andrey<span>.</span></a>
+  <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/projects/">Projects</a></li><li><a href="/skills/" class="current">Skills</a></li></ul>
+  <a href="/#contact" class="nav-contact">Contact</a>
+</nav>
+<div class="wrapper page-shell">
+  <section>
+    <div class="page-intro reveal">
+      <div class="kicker">Technical areas</div>
+      <h1 class="page-title">Skills snapshot</h1>
+      <p class="page-subtitle">This page is optional, but it helps if you want a quick place to summarize the stack behind the project pages.</p>
+    </div>
+    <div class="detail-layout">
+      <article class="detail-card reveal">
+        <div class="kicker">Core stack</div>
+        <div class="tags"><span class="tag blue">Angular</span><span class="tag blue">TypeScript</span><span class="tag">PHP</span><span class="tag blue">Python</span><span class="tag">SQL</span><span class="tag">C</span></div>
+        <div class="stack-list">
+          <div class="list-card"><strong>Frontend:</strong><div class="body-copy">Angular, TypeScript, HTML, CSS, PWA-oriented UI work.</div></div>
+          <div class="list-card"><strong>Backend:</strong><div class="body-copy">PHP, Python, REST APIs, MySQL, automation scripts.</div></div>
+          <div class="list-card"><strong>AI / Systems:</strong><div class="body-copy">LLM workflows, retrieval pipelines, simulation logic, and practical developer tooling.</div></div>
+        </div>
+      </article>
+      <aside class="detail-card reveal">
+        <div class="kicker">Use this page sparingly</div>
+        <p class="body-copy">For recruiting, the project pages should do more of the work than a giant skills wall. Keep this page secondary and let the case studies prove the stack.</p>
+      </aside>
+    </div>
+  </section>
+</div>
+<footer><span class="footer-text">© 2026 Andrey Dermendzhiev</span><div class="footer-links"><a href="/projects/">Projects</a><a href="/">Home</a></div></footer>
+<script type="module" src="/assets/site.js"></script>
+</body>
+</html>

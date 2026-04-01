@@ -1,9 +1,23 @@
 [
   {
-    "name": "Healthcare SQL Joins Demo",
-    "about": "Relational schema + seed + joins with CI.",
-    "tags": ["SQL","SQLite","ERD","CI"],
-    "repo": "https://github.com/AndreyDermend/healthcare-sql-joins-demo",
-    "page": "/projects/healthcare-sql-joins-demo.html"
+    "name": "iLaunch.online",
+    "about": "Production PWA used by six affiliates; featured full-stack case study.",
+    "tags": ["Angular", "TypeScript", "PHP", "MySQL", "PWA"],
+    "repo": "#",
+    "page": "/projects/ilaunch.html"
+  },
+  {
+    "name": "CGI Capstone Project",
+    "about": "Agentic AI / contract workflow project page scaffolded for repo and visuals.",
+    "tags": ["AI", "LLM", "Python", "Capstone"],
+    "repo": "#",
+    "page": "/projects/cgi-capstone.html"
+  },
+  {
+    "name": "Traffic Flow Simulation",
+    "about": "C simulation engine + Python API + web visualizer based on real street observations.",
+    "tags": ["C", "Python", "FastAPI", "Visualization"],
+    "repo": "#",
+    "page": "/projects/traffic-flow-simulation.html"
   }
 ]

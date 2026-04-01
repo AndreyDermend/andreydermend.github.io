@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Traffic Flow Simulation — Andrey Dermendzhiev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+</head>
+<body>
+<div id="progress-bar"></div><div id="cursor"></div><div id="cursor-ring"></div>
+<nav>
+  <a href="/" class="nav-logo">Andrey<span>.</span></a>
+  <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/projects/" class="current">Projects</a></li><li><a href="/#contact">Contact</a></li></ul>
+  <a href="/#contact" class="nav-contact">Contact</a>
+</nav>
+<div class="wrapper page-shell">
+  <section>
+    <div class="page-intro reveal">
+      <div class="kicker">Systems project rebuilt for the web</div>
+      <h1 class="page-title">Traffic Flow Simulation</h1>
+      <p class="page-subtitle">A traffic modeling project based on real-world street observations, rebuilt into a full-stack demo using a C simulation engine, a Python API, and a browser visualizer that shows streets, cars, lights, and congestion tick by tick.</p>
+      <div class="meta-row"><span class="badge live">Systems + web</span><span class="badge collab">Team origin</span><span class="badge feat-badge">Visualization rebuild</span></div>
+      <div class="project-page-links"><span class="inline-pill">Connect repo + screenshots next</span></div>
+    </div>
+    <div class="stat-grid reveal">
+      <div class="stat-card"><div class="stat-label">Original core</div><div class="stat-value">C engine</div></div>
+      <div class="stat-card"><div class="stat-label">Rebuild layer</div><div class="stat-value">Python API</div></div>
+      <div class="stat-card"><div class="stat-label">Presentation layer</div><div class="stat-value">Web visualizer</div></div>
+    </div>
+    <div class="detail-layout">
+      <article class="detail-card reveal">
+        <div class="kicker">Process story</div>
+        <div class="detail-list">
+          <div class="bullet-row"><div class="impact-check" style="background:var(--blue-light)"><svg width="9" height="9" style="color:var(--blue)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>Real-world observation:</strong> street size approximations and vehicle counts from actual roads.</div></div>
+          <div class="bullet-row"><div class="impact-check" style="background:var(--purple-light)"><svg width="9" height="9" style="color:var(--purple)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>C systems design:</strong> structs, queues, timing logic, and probabilistic routing.</div></div>
+          <div class="bullet-row"><div class="impact-check" style="background:var(--green-light)"><svg width="9" height="9" style="color:var(--green)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>Testing:</strong> low/high represented seconds, full queues, empty queues, blocked movement, and stop-sign behavior.</div></div>
+          <div class="bullet-row"><div class="impact-check" style="background:var(--orange-light)"><svg width="9" height="9" style="color:var(--orange)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>Rebuild:</strong> Python backend for execution and a browser visualizer to make the simulation easier to explain.</div></div>
+        </div>
+        <div class="notice">In the next step, this page should get the live repo link and screenshots from the improved street-scene visualizer.</div>
+      </article>
+      <aside class="detail-card reveal">
+        <div class="kicker">Current stack</div>
+        <div class="tags"><span class="tag">C</span><span class="tag blue">Python</span><span class="tag blue">FastAPI</span><span class="tag green">SVG / JS</span><span class="tag orange">GitHub Actions</span></div>
+        <div class="stack-list">
+          <div class="list-card"><strong>Why it belongs in the portfolio</strong><div class="body-copy">It shows real-world data collection, systems programming, teamwork, testing, and full-stack communication in one project.</div></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</div>
+<footer><span class="footer-text">© 2026 Andrey Dermendzhiev</span><div class="footer-links"><a href="/projects/">Back to projects</a></div></footer>
+<script type="module" src="/assets/site.js"></script>
+</body>
+</html>

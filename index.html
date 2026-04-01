@@ -1,29 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Andrey Dermendzhiev — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+</head>
+<body>
+<div id="progress-bar"></div>
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<nav>
+  <a href="/" class="nav-logo">Andrey<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-contact">Contact</a>
+</nav>
+<div class="wrapper">
+  <section id="hero">
+    <div class="hero-orb orb-1"></div>
+    <div class="hero-orb orb-2"></div>
+    <div class="hero-text">
+      <div class="hero-chip"><div class="chip-dot"></div>CS Student · University of Saint Joseph · May 2026</div>
+      <h1 class="hero-name">Andrey Dermendzhiev</h1>
+      <div class="hero-role"><span id="typewriter"></span><span id="tw-cursor"></span></div>
+      <p class="hero-bio">Computer Science student with real production experience — shipped a live PWA for six business affiliates, built AI-focused contract workflow tooling, and rebuilt a traffic simulation project into a full-stack visual demo. I like projects that start with a real workflow problem and end in something people can actually use.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-filled"><svg width="14" height="14"><use href="/assets/icons.svg#icon-code"/></svg>See My Work</a>
+        <a href="/projects/" class="btn-ghost"><svg width="14" height="14"><use href="/assets/icons.svg#icon-doc"/></svg>Project Pages</a>
+      </div>
+      <div class="hero-links">
+        <a href="https://github.com/AndreyDermend" class="hero-ext" target="_blank" rel="noreferrer"><svg width="13" height="13"><use href="/assets/icons.svg#icon-github"/></svg>GitHub</a>
+        <a href="mailto:DermendzhievAndrey@gmail.com" class="hero-ext"><svg width="13" height="13"><use href="/assets/icons.svg#icon-mail"/></svg>Email</a>
+        <a href="/projects/" class="hero-ext"><svg width="13" height="13"><use href="/assets/icons.svg#icon-external"/></svg>Project Case Studies</a>
+      </div>
+    </div>
+  </section>
 
-<!doctype html><html><head>
-<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Andrey Dermendzhiev – Portfolio</title>
-<link rel="stylesheet" href="/assets/site.css">
-</head><body>
-<header><nav>
-  <a href="/">Home</a>
-  <a href="/projects/">Projects</a>
-  <a href="/skills/">Skills</a>
-</nav></header>
-<main>
-  <h1>Hi, I’m Andrey 👋</h1>
-  <p>Full-stack (primary) • DevOps (secondary). Selected projects below.</p>
-  <section id="cards" class="grid"></section>
-</main>
-<script type="module">
-  const res = await fetch('/projects/projects.json');
-  const list = await res.json();
-  const grid = document.getElementById('cards');
-  grid.innerHTML = list.map(p => `
-    <article class="card">
-      <h3>${p.name}</h3>
-      <p>${p.about}</p>
-      <p class="tags">${p.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</p>
-      <p><a href="${p.page}" class="link">Project page →</a> · <a href="${p.repo}" class="link" target="_blank">Repo →</a></p>
-    </article>`).join('');
-</script>
-</body></html>
+  <section id="projects">
+    <div class="section-title reveal">Projects</div>
+    <div class="filter-tabs reveal">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="fullstack">Full Stack</button>
+      <button class="filter-btn" data-filter="ai">AI / ML</button>
+      <button class="filter-btn" data-filter="systems">Systems</button>
+    </div>
+
+    <div class="projects-grid">
+      <a href="/projects/ilaunch.html" class="project-card featured reveal" data-categories="fullstack">
+        <div class="feat-header">
+          <div class="feat-header-left">
+            <div class="proj-top">
+              <div class="proj-icon"><svg width="18" height="18"><use href="/assets/icons.svg#icon-globe"/></svg></div>
+              <span class="badge feat-badge">Featured · Production</span>
+            </div>
+          </div>
+          <div class="feat-stats">
+            <div class="feat-stat"><span class="feat-stat-val" style="color:var(--blue)">6</span><span>affiliates</span></div>
+            <span class="feat-stat-sep">·</span>
+            <div class="feat-stat"><span class="feat-stat-val" style="color:var(--green)">Live</span></div>
+            <span class="feat-stat-sep">·</span>
+            <div class="feat-stat"><span class="feat-stat-val">2</span><span>person team</span></div>
+          </div>
+        </div>
+        <div class="proj-title">iLaunch.online</div>
+        <div class="proj-sub">Progressive Web App · Tiger Eye Technology</div>
+        <p class="proj-desc">Production PWA used by six affiliates. Built in a two-person team, with leadership across multiple platform features and contributions across most core application functionality. This will be the portfolio’s strongest “real product shipped” case study.</p>
+        <div class="proj-impacts">
+          <div class="proj-impact"><div class="impact-check" style="background:var(--green-light)"><svg width="9" height="9" style="color:var(--green)"><use href="/assets/icons.svg#icon-check"/></svg></div>Live production product with real affiliate usage</div>
+          <div class="proj-impact"><div class="impact-check" style="background:var(--blue-light)"><svg width="9" height="9" style="color:var(--blue)"><use href="/assets/icons.svg#icon-check"/></svg></div>Frontend + backend ownership across selected features</div>
+          <div class="proj-impact"><div class="impact-check" style="background:var(--purple-light)"><svg width="9" height="9" style="color:var(--purple)"><use href="/assets/icons.svg#icon-check"/></svg></div>Angular, TypeScript, PHP, MySQL, and deployment workflows</div>
+        </div>
+        <div class="tags">
+          <span class="tag blue">Angular</span><span class="tag blue">TypeScript</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag green">PWA</span>
+        </div>
+        <div class="proj-links"><span class="proj-link">View case study</span></div>
+      </a>
+
+      <a href="/projects/cgi-capstone.html" class="project-card reveal" data-categories="ai fullstack">
+        <div class="proj-top">
+          <div class="proj-icon"><svg width="18" height="18"><use href="/assets/icons.svg#icon-cpu"/></svg></div>
+          <span class="badge wip">Capstone</span>
+        </div>
+        <div class="proj-title">CGI Capstone Project</div>
+        <div class="proj-sub">AI contract workflow / document automation</div>
+        <p class="proj-desc">Agentic AI capstone centered on legal document handling and contract workflow automation. This page is scaffolded now so you can drop in the repository details, screenshots, and final architecture next.</p>
+        <div class="proj-impacts">
+          <div class="proj-impact"><div class="impact-check" style="background:var(--purple-light)"><svg width="9" height="9" style="color:var(--purple)"><use href="/assets/icons.svg#icon-check"/></svg></div>Portfolio page ready for repo, visuals, and architecture write-up</div>
+        </div>
+        <div class="tags"><span class="tag purple">AI</span><span class="tag purple">LLM</span><span class="tag orange">Capstone</span><span class="tag">Workflow Automation</span></div>
+      </a>
+
+      <a href="/projects/traffic-flow-simulation.html" class="project-card reveal" data-categories="systems fullstack">
+        <div class="proj-top">
+          <div class="proj-icon"><svg width="18" height="18"><use href="/assets/icons.svg#icon-server"/></svg></div>
+          <span class="badge live">Systems + Web</span>
+        </div>
+        <div class="proj-title">Traffic Flow Simulation</div>
+        <div class="proj-sub">C engine · Python API · browser visualizer</div>
+        <p class="proj-desc">A traffic modeling project based on real-world street observations, rebuilt into a modern full-stack demo. It combines queue logic in C, a Python backend, and a visual street-scene frontend designed for portfolio presentation.</p>
+        <div class="proj-impacts">
+          <div class="proj-impact"><div class="impact-check" style="background:var(--blue-light)"><svg width="9" height="9" style="color:var(--blue)"><use href="/assets/icons.svg#icon-check"/></svg></div>Real-world data collection → systems design → visualization story</div>
+        </div>
+        <div class="tags"><span class="tag">C</span><span class="tag blue">Python</span><span class="tag blue">FastAPI</span><span class="tag green">Visualization</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-title reveal">Experience</div>
+    <p class="reveal body-copy" style="margin-bottom:1.25rem;margin-top:-.75rem;max-width:720px">The goal here is not to list everything. It is to make the shipped work and technical range obvious fast.</p>
+    <div class="exp-strip">
+      <div class="exp-row reveal from-left">
+        <div class="exp-logo"><svg width="18" height="18"><use href="/assets/icons.svg#icon-briefcase"/></svg></div>
+        <div><div class="exp-role">Full-Stack Developer Contractor</div><div class="exp-company">Tiger Eye Technology</div></div>
+        <span class="exp-date">Jul 2024 – Present</span>
+      </div>
+      <div class="exp-row reveal from-left" style="transition-delay:.08s">
+        <div class="exp-logo"><svg width="18" height="18"><use href="/assets/icons.svg#icon-briefcase"/></svg></div>
+        <div><div class="exp-role">Software Developer Intern</div><div class="exp-company">Viome Life Sciences</div></div>
+        <span class="exp-date">Jul – Aug 2023</span>
+      </div>
+      <div class="exp-row reveal from-left" style="transition-delay:.16s">
+        <div class="exp-logo"><svg width="18" height="18"><use href="/assets/icons.svg#icon-graduation"/></svg></div>
+        <div><div class="exp-role">B.S. Computer Science · GPA 3.85</div><div class="exp-company">University of Saint Joseph</div></div>
+        <span class="exp-date">Graduating May 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="section-title reveal">Contact</div>
+    <div class="contact-grid reveal">
+      <a href="mailto:DermendzhievAndrey@gmail.com" class="contact-card">
+        <div class="contact-icon"><svg width="18" height="18"><use href="/assets/icons.svg#icon-mail"/></svg></div>
+        <div><div class="contact-label">Email</div><div class="contact-value">DermendzhievAndrey@gmail.com</div></div>
+      </a>
+      <a href="tel:8605592640" class="contact-card">
+        <div class="contact-icon"><svg width="18" height="18"><use href="/assets/icons.svg#icon-phone"/></svg></div>
+        <div><div class="contact-label">Phone</div><div class="contact-value">(860) 559-2640</div></div>
+      </a>
+      <a href="https://github.com/AndreyDermend" class="contact-card" target="_blank" rel="noreferrer">
+        <div class="contact-icon"><svg width="18" height="18"><use href="/assets/icons.svg#icon-github"/></svg></div>
+        <div><div class="contact-label">GitHub</div><div class="contact-value">github.com/AndreyDermend</div></div>
+      </a>
+      <a href="/projects/" class="contact-card">
+        <div class="contact-icon"><svg width="18" height="18"><use href="/assets/icons.svg#icon-doc"/></svg></div>
+        <div><div class="contact-label">Project pages</div><div class="contact-value">Three case-study pages ready to extend</div></div>
+      </a>
+    </div>
+  </section>
+</div>
+<footer>
+  <span class="footer-text">© 2026 Andrey Dermendzhiev · West Hartford, CT</span>
+  <div class="footer-links"><a href="/projects/">Projects</a><a href="https://github.com/AndreyDermend" target="_blank" rel="noreferrer">GitHub</a><a href="mailto:DermendzhievAndrey@gmail.com">Email</a></div>
+</footer>
+<script type="module" src="/assets/site.js"></script>
+</body>
+</html>
