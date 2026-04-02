@@ -17,7 +17,8 @@
     "name": "Traffic Flow Simulation",
     "about": "C simulation engine + Python API + web visualizer based on real street observations.",
     "tags": ["C", "Python", "FastAPI", "Visualization"],
-    "repo": "#",
-    "page": "/projects/traffic-flow-simulation.html"
+    "repo": "https://github.com/AndreyDermend/traffic-flow-simulation",
+    "page": "/projects/traffic-flow-simulation.html",
+    "demo": "/demo/traffic-sim/"
   }
 ]

@@ -21,37 +21,56 @@
     <div class="page-intro reveal">
       <div class="kicker">Systems project rebuilt for the web</div>
       <h1 class="page-title">Traffic Flow Simulation</h1>
-      <p class="page-subtitle">A traffic modeling project based on real-world street observations, rebuilt into a full-stack demo using a C simulation engine, a Python API, and a browser visualizer that shows streets, cars, lights, and congestion tick by tick.</p>
-      <div class="meta-row"><span class="badge live">Systems + web</span><span class="badge collab">Team origin</span><span class="badge feat-badge">Visualization rebuild</span></div>
-      <div class="project-page-links"><span class="inline-pill">Connect repo + screenshots next</span></div>
+      <p class="page-subtitle">A traffic modeling project grounded in real-world street observations. Queue capacity, vehicle arrival rates, and signal timing were collected from actual intersections, then modeled in a C simulation engine, wrapped in a Python API, and presented through an interactive browser visualizer that renders streets, cars, lights, and congestion tick by tick.</p>
+      <div class="meta-row"><span class="badge live">Systems + Web</span><span class="badge collab">Team origin</span><span class="badge feat-badge">Interactive demo</span></div>
+      <div class="project-page-links">
+        <a href="https://github.com/AndreyDermend/traffic-flow-simulation" class="inline-pill" target="_blank" rel="noreferrer">GitHub repo</a>
+        <a href="/demo/traffic-sim/" class="inline-pill">Live demo</a>
+      </div>
     </div>
+
     <div class="stat-grid reveal">
-      <div class="stat-card"><div class="stat-label">Original core</div><div class="stat-value">C engine</div></div>
-      <div class="stat-card"><div class="stat-label">Rebuild layer</div><div class="stat-value">Python API</div></div>
-      <div class="stat-card"><div class="stat-label">Presentation layer</div><div class="stat-value">Web visualizer</div></div>
+      <div class="stat-card"><div class="stat-label">Simulation core</div><div class="stat-value">C engine</div></div>
+      <div class="stat-card"><div class="stat-label">API layer</div><div class="stat-value">Python + FastAPI</div></div>
+      <div class="stat-card"><div class="stat-label">Visualization</div><div class="stat-value">SVG + JavaScript</div></div>
     </div>
+
     <div class="detail-layout">
       <article class="detail-card reveal">
-        <div class="kicker">Process story</div>
+        <div class="kicker">How it was built</div>
         <div class="detail-list">
-          <div class="bullet-row"><div class="impact-check" style="background:var(--blue-light)"><svg width="9" height="9" style="color:var(--blue)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>Real-world observation:</strong> street size approximations and vehicle counts from actual roads.</div></div>
-          <div class="bullet-row"><div class="impact-check" style="background:var(--purple-light)"><svg width="9" height="9" style="color:var(--purple)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>C systems design:</strong> structs, queues, timing logic, and probabilistic routing.</div></div>
-          <div class="bullet-row"><div class="impact-check" style="background:var(--green-light)"><svg width="9" height="9" style="color:var(--green)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>Testing:</strong> low/high represented seconds, full queues, empty queues, blocked movement, and stop-sign behavior.</div></div>
-          <div class="bullet-row"><div class="impact-check" style="background:var(--orange-light)"><svg width="9" height="9" style="color:var(--orange)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>Rebuild:</strong> Python backend for execution and a browser visualizer to make the simulation easier to explain.</div></div>
+          <div class="bullet-row"><div class="impact-check" style="background:var(--blue-light)"><svg width="9" height="9" style="color:var(--blue)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>Real-world observation:</strong> visited local intersections to estimate street queue capacity (9-54 cars), count vehicle arrivals per 5-minute window, and note signal vs. stop-sign control for 12 street segments.</div></div>
+          <div class="bullet-row"><div class="impact-check" style="background:var(--purple-light)"><svg width="9" height="9" style="color:var(--purple)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>C systems design:</strong> modeled streets as structs with linked-list queues, implemented tick-based simulation with probabilistic car arrivals, signal phase alternation, stop-sign yield logic, and destination routing.</div></div>
+          <div class="bullet-row"><div class="impact-check" style="background:var(--green-light)"><svg width="9" height="9" style="color:var(--green)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>Edge-case testing:</strong> validated behavior across low/high simulation durations, full and empty queues, red-light blocking, stop-sign throughput, and destination-overflow scenarios.</div></div>
+          <div class="bullet-row"><div class="impact-check" style="background:var(--orange-light)"><svg width="9" height="9" style="color:var(--orange)"><use href="/assets/icons.svg#icon-check"/></svg></div><div><strong>Full-stack rebuild:</strong> wrapped the compiled C binary in a FastAPI backend with CORS, then built an interactive SVG visualizer showing roads, directional lanes, car blocks, signal states, and per-street detail inspection.</div></div>
         </div>
-        <div class="notice">In the next step, this page should get the live repo link and screenshots from the improved street-scene visualizer.</div>
+
+        <div class="kicker" style="margin-top:28px">What the demo shows</div>
+        <p class="body-copy">The live demo runs the C engine through the Python API, then plays back 60 ticks of simulation (representing 5 minutes of real traffic). You can scrub through ticks, click any street to see its queue count, capacity, fullness percentage, and signal state. Peak congestion is highlighted automatically.</p>
       </article>
+
       <aside class="detail-card reveal">
-        <div class="kicker">Current stack</div>
-        <div class="tags"><span class="tag">C</span><span class="tag blue">Python</span><span class="tag blue">FastAPI</span><span class="tag green">SVG / JS</span><span class="tag orange">GitHub Actions</span></div>
+        <div class="kicker">Stack</div>
+        <div class="tags">
+          <span class="tag">C</span><span class="tag blue">Python</span><span class="tag blue">FastAPI</span><span class="tag green">SVG / JS</span><span class="tag orange">GitHub Actions</span><span class="tag purple">CI/CD</span>
+        </div>
+
+        <div class="kicker" style="margin-top:22px">Architecture</div>
         <div class="stack-list">
-          <div class="list-card"><strong>Why it belongs in the portfolio</strong><div class="body-copy">It shows real-world data collection, systems programming, teamwork, testing, and full-stack communication in one project.</div></div>
+          <div class="list-card"><strong>Simulation engine</strong><div class="body-copy">C binary accepts duration and seed, outputs JSON with 60 tick snapshots of the full street network state.</div></div>
+          <div class="list-card"><strong>Backend API</strong><div class="body-copy">FastAPI wraps the engine binary, exposes /run-simulation with query params, and serves JSON to the frontend.</div></div>
+          <div class="list-card"><strong>Frontend visualizer</strong><div class="body-copy">Static HTML/CSS/JS renders an SVG street scene with playback controls, summary stats, and a detail panel for inspecting individual streets.</div></div>
+        </div>
+
+        <div class="kicker" style="margin-top:22px">Data source</div>
+        <div class="stack-list">
+          <div class="list-card"><strong>12 observed street segments</strong><div class="body-copy">Queue capacities from 9 to 54 cars, arrival rates from 3 to 42 cars per 5-minute window, mix of signal and stop-sign control.</div></div>
         </div>
       </aside>
     </div>
   </section>
 </div>
-<footer><span class="footer-text">© 2026 Andrey Dermendzhiev</span><div class="footer-links"><a href="/projects/">Back to projects</a></div></footer>
+<footer><span class="footer-text">&copy; 2026 Andrey Dermendzhiev</span><div class="footer-links"><a href="/projects/">Back to projects</a></div></footer>
 <script type="module" src="/assets/site.js"></script>
 </body>
 </html>
