@@ -11,7 +11,6 @@ export default defineConfig({
         ilaunch: resolve(__dirname, 'projects/ilaunch.html'),
         cgiCapstone: resolve(__dirname, 'projects/cgi-capstone.html'),
         trafficFlowSimulation: resolve(__dirname, 'projects/traffic-flow-simulation.html'),
-        trafficSimDemo: resolve(__dirname, 'demo/traffic-sim/index.html'),
         skills: resolve(__dirname, 'skills/index.html'),
       },
     },
