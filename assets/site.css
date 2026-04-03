@@ -75,7 +75,7 @@ nav{
   transition:background .2s,transform .3s var(--ease-spring),box-shadow .2s;
 }
 .nav-contact:hover{background:var(--blue-light);transform:scale(1.04)}
-.wrapper{max-width:1280px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+.wrapper{max-width:1600px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
 section{padding:5rem 0}
 #hero{min-height:100vh;display:flex;align-items:center;padding:8rem 0 4rem;position:relative}
 .hero-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;animation:orbFloat 8s ease-in-out infinite}
@@ -175,7 +175,7 @@ section{padding:5rem 0}
 .contact-card:hover .contact-icon{transform:scale(1.1);background:var(--blue-mid)}
 .contact-label{font-family:'Google Sans',sans-serif;font-size:.73rem;color:var(--text-muted);margin-bottom:.1rem}
 .contact-value{font-family:'Google Sans',sans-serif;font-size:.88rem;font-weight:500;color:var(--text)}
-footer{border-top:1px solid var(--border);padding:1.5rem clamp(1.25rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:0 auto}
+footer{border-top:1px solid var(--border);padding:1.5rem clamp(1.25rem,4vw,3rem);display:flex;align-items:center;justify-content:space-between;max-width:1600px;margin:0 auto}
 .footer-text{font-size:.75rem;color:var(--text-muted)}
 .footer-links{display:flex;gap:1.25rem}
 .footer-links a{font-size:.75rem;color:var(--blue);text-decoration:none;font-family:'Google Sans',sans-serif;font-weight:500}
