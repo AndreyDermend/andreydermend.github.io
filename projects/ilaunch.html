@@ -17,47 +17,554 @@
   <a href="/#contact" class="nav-contact">Contact</a>
 </nav>
 <div class="wrapper page-shell">
-  <section>
-    <div class="page-intro reveal">
-      <div class="kicker">Featured production project</div>
-      <h1 class="page-title">iLaunch.online</h1>
-      <p class="page-subtitle">Production Progressive Web App used by six affiliates. This page is intentionally structured so you can drop in your private branch details and screenshots without changing the overall portfolio design.</p>
-      <div class="meta-row">
-        <span class="badge feat-badge">Production</span>
-        <span class="badge live">6 affiliates</span>
-        <span class="badge collab">2-person team</span>
-      </div>
-      <div class="project-page-links">
-        <span class="inline-pill">Add live URL / branch link next</span>
+
+  <!-- ── Hero ── -->
+  <section class="il-hero reveal">
+    <div class="il-hero-top">
+      <div class="il-hero-text">
+        <div class="hero-chip"><div class="chip-dot"></div>Featured · Production</div>
+        <h1 class="page-title">iLaunch.online</h1>
+        <p class="page-subtitle">Production SaaS platform that gives small businesses and entrepreneurs fully built, maintained websites for a single upfront cost. Built on a shared Angular component library that powers every client site from one codebase.</p>
+        <div class="meta-row">
+          <span class="badge feat-badge">Live Product</span>
+          <span class="badge live">6 Affiliates</span>
+          <span class="badge collab">Tiger Eye Technology</span>
+        </div>
       </div>
     </div>
-
-    <div class="stat-grid reveal">
-      <div class="stat-card"><div class="stat-label">Adoption</div><div class="stat-value">6 affiliates</div></div>
-      <div class="stat-card"><div class="stat-label">Team size</div><div class="stat-value">2 developers</div></div>
-      <div class="stat-card"><div class="stat-label">Role</div><div class="stat-value">Feature lead</div></div>
-    </div>
-
-    <div class="detail-layout">
-      <article class="detail-card reveal">
-        <div class="kicker">Project overview</div>
-        <p class="body-copy">iLaunch.online is the strongest proof on the site that you have worked on real production software, not just class projects. The purpose of this page is to tell that story cleanly: what the platform does, which features you led, what you contributed across the stack, and why “used by six affiliates” matters.</p>
-        <div class="stack-list">
-          <div class="list-card"><strong>What to add next:</strong><div class="body-copy">A short product description, 3–5 specific features you personally led, and screenshots of the actual platform.</div></div>
-          <div class="list-card"><strong>Best narrative:</strong><div class="body-copy">Two-person team, lead developer on selected features, broad contribution across core functionality, and real production adoption.</div></div>
-        </div>
-      </article>
-      <aside class="detail-card reveal">
-        <div class="kicker">Suggested stack tags</div>
-        <div class="tags">
-          <span class="tag blue">Angular</span><span class="tag blue">TypeScript</span><span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag green">PWA</span><span class="tag orange">CI/CD</span>
-        </div>
-        <div class="notice">Next step: create your private/public branch for iLaunch-safe portfolio content, then swap the placeholder link with the real branch or sanitized demo repo.</div>
-      </aside>
+    <div class="il-stats">
+      <div class="il-stat">
+        <div class="il-stat-val">22</div>
+        <div class="il-stat-label">months</div>
+      </div>
+      <div class="il-stat">
+        <div class="il-stat-val">182<span class="il-stat-plus">+</span></div>
+        <div class="il-stat-label">commits</div>
+      </div>
+      <div class="il-stat">
+        <div class="il-stat-val">15<span class="il-stat-plus">+</span></div>
+        <div class="il-stat-label">features shipped</div>
+      </div>
+      <div class="il-stat">
+        <div class="il-stat-val">6</div>
+        <div class="il-stat-label">live affiliates</div>
+      </div>
+      <div class="il-stat">
+        <div class="il-stat-val">17→19</div>
+        <div class="il-stat-label">Angular upgrade</div>
+      </div>
+      <div class="il-stat">
+        <div class="il-stat-val">2</div>
+        <div class="il-stat-label">core devs</div>
+      </div>
     </div>
   </section>
+
+  <!-- ── Role context ── -->
+  <section class="il-context reveal">
+    <p class="body-copy">I joined Tiger Eye Technology as an intern in June 2024 and grew into a full-stack contractor leading feature development. What started as learning Angular through component refactors became architecting shared libraries, building complete systems from scratch, and shipping production features used by real businesses. This timeline traces that progression.</p>
+    <div class="tags" style="margin-top:1rem">
+      <span class="tag blue">Angular</span><span class="tag blue">TypeScript</span><span class="tag">Ionic</span><span class="tag">RxJS</span><span class="tag">Capacitor</span><span class="tag green">PWA</span><span class="tag">Stripe</span><span class="tag purple">Angular CDK</span><span class="tag">IndexedDB</span><span class="tag">Service Workers</span><span class="tag">Chart.js</span><span class="tag">Luxon</span>
+    </div>
+  </section>
+
+  <!-- ── Timeline ── -->
+  <section id="timeline" class="il-timeline-section">
+    <div class="section-title reveal">Development Timeline</div>
+    <p class="reveal body-copy" style="margin-bottom:2.5rem">Click any milestone to see what I built, the challenges I solved, and the tech I used.</p>
+
+    <div class="tl-wrap">
+      <div class="tl-line">
+        <div class="tl-line-fill"></div>
+      </div>
+
+      <!-- Phase 1 -->
+      <div class="tl-node reveal" data-phase="1">
+        <div class="tl-marker"><span>1</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Jun – Jul 2024</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-intern">Intern</div>
+              <h3 class="tl-title">Library Foundation</h3>
+              <p class="tl-preview">Bootstrapped the Angular workspace and shared component library that every future feature would build on.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>Initialized the Angular monorepo workspace and library scaffold using ng-packagr</li>
+                    <li>Transferred the e-commerce storefront module into the shared library</li>
+                    <li>Set up the build pipeline and documentation for library consumption across multiple client apps</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">First time bootstrapping an Angular library project — had to design the package structure so it could be consumed by multiple independent client applications from day one.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag blue">Angular 17</span><span class="tag blue">TypeScript</span><span class="tag">ng-packagr</span><span class="tag">Ionic</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Impact</div>
+                  <div class="tl-metric"><span class="tl-metric-val">1</span> shared library created</div>
+                  <div class="tl-metric"><span class="tl-metric-val">3+</span> client apps supported</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="tl-node reveal" data-phase="2">
+        <div class="tl-marker"><span>2</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Jul – Aug 2024</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-intern">Intern</div>
+              <h3 class="tl-title">Hub, Settings & Login System</h3>
+              <p class="tl-preview">Built the centralized navigation hub, a DI-based configuration system, and a login popup that works inside the checkout flow.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>Hub and Settings components — centralized dashboard and app configuration</li>
+                    <li>Dependency injection system for passing settings from consuming apps into the library without tight coupling</li>
+                    <li>Login popup component embedded inside the checkout flow with proper state management</li>
+                    <li>Created documentation for the globals/settings architecture</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">Designing a DI-based globals system where any consuming app can inject its own configuration into the library — learned RxJS Observables for reactive settings propagation.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag blue">Angular 17</span><span class="tag blue">TypeScript</span><span class="tag">RxJS</span><span class="tag">Ionic</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Learned</div>
+                  <div class="tl-metric">RxJS Observables</div>
+                  <div class="tl-metric">Angular DI patterns</div>
+                  <div class="tl-metric">HTML async pipe</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="tl-node reveal" data-phase="3">
+        <div class="tl-marker"><span>3</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Aug – Sep 2024</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-intern">Intern</div>
+              <h3 class="tl-title">E-Commerce & Stripe Integration</h3>
+              <p class="tl-preview">Built the checkout UI, side cart, and dynamic routing while collaborating on Stripe payment integration.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>Side cart with subscribable state updates via HTML async pipe</li>
+                    <li>Reusable add-to-cart button designed as MVP but scalable for use anywhere</li>
+                    <li>Dynamic routing service — routes across different MVPs with logic for multi-page checkout flows</li>
+                    <li>Checkout page UI and login-inside-checkout popup</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">Coordinating frontend and backend Stripe integration with another developer on separate branches. Had to debug cross-origin iframe rendering issues and resolve merge conflicts from parallel work.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag blue">Angular 17</span><span class="tag">Stripe.js</span><span class="tag blue">TypeScript</span><span class="tag">RxJS</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Collaboration</div>
+                  <div class="tl-metric">Paired with backend dev on Stripe PaymentIntent</div>
+                  <div class="tl-metric"><span class="tl-metric-val">E-Commerce V1</span> shipped</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="tl-node reveal" data-phase="4">
+        <div class="tl-marker"><span>4</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Oct – Nov 2024</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-growing">Growing</div>
+              <h3 class="tl-title">Library-First Architecture</h3>
+              <p class="tl-preview">Migrated core components from client apps into the shared library — establishing the reusable architecture pattern used across all products.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>Extracted Header, Footer, Clickmap, Access-Restrict, and Profile Photo into the shared library</li>
+                    <li>Refactored all core components to consume services from the library instead of local implementations</li>
+                    <li>Made header/footer visibility dynamically configurable per route via the globals system</li>
+                    <li>Integrated library into the client app — touching 49 files, rewriting imports across every component</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">Large-scale component extraction while maintaining backward compatibility. Three developers working on overlapping files created complex merge conflicts. Had to reconcile two architectures — standalone app vs. library-dependent app.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag blue">Angular 17</span><span class="tag">SCSS</span><span class="tag">RxJS</span><span class="tag">Ionic</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Impact</div>
+                  <div class="tl-metric"><span class="tl-metric-val">30+</span> files extracted</div>
+                  <div class="tl-metric"><span class="tl-metric-val">~778</span> lines removed from app</div>
+                  <div class="tl-metric"><span class="tl-metric-val">49</span> files touched in integration</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 5 -->
+      <div class="tl-node reveal" data-phase="5">
+        <div class="tl-marker"><span>5</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Dec 2024</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-growing">Growing</div>
+              <h3 class="tl-title">Runtime Configuration</h3>
+              <p class="tl-preview">Replaced hardcoded frontend globals with backend-served configuration — enabling environment-agnostic deployments.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>Eliminated the 101-line hardcoded Globals.ts file entirely</li>
+                    <li>Refactored app initialization to fetch configuration from the backend API at runtime</li>
+                    <li>Wrote library installation documentation for onboarding new client apps</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">Race condition — components needed global config before the API call returned. Required careful async orchestration of the app initialization sequence. Shipped a Christmas Day hotfix when config key retrieval broke in production.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag blue">Angular 17</span><span class="tag blue">TypeScript</span><span class="tag">REST API</span><span class="tag">RxJS</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Impact</div>
+                  <div class="tl-metric"><span class="tl-metric-val">101</span> lines of config eliminated</div>
+                  <div class="tl-metric">Environment-agnostic deploys</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 6 -->
+      <div class="tl-node reveal" data-phase="6">
+        <div class="tl-marker"><span>6</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Dec 2024 – Feb 2025</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-contractor">Contractor</div>
+              <h3 class="tl-title">User Control Panel</h3>
+              <p class="tl-preview">Designed and built the user control system from scratch through 15 versioned iterations — my first major solo feature.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>User Control component built through versions 1.0.1 → 1.5.1 with documented iteration</li>
+                    <li>Filter functionality, toggle states, iframe management, and user management features</li>
+                    <li>Performed Angular 17 → 19 framework upgrade mid-project</li>
+                    <li>Validated cross-client compatibility with multiple consuming apps</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">Iterating through 15 versions while performing a major framework upgrade (Angular 17 → 19) mid-development. Each version built on the previous, requiring careful state management across merges and client compatibility testing.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag blue">Angular 17→19</span><span class="tag blue">TypeScript</span><span class="tag">Ionic</span><span class="tag purple">Angular CDK</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Impact</div>
+                  <div class="tl-metric"><span class="tl-metric-val">15</span> versioned iterations</div>
+                  <div class="tl-metric"><span class="tl-metric-val">Angular 19</span> upgrade shipped</div>
+                  <div class="tl-metric">Cross-client validated</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 7 -->
+      <div class="tl-node reveal" data-phase="7">
+        <div class="tl-marker"><span>7</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Feb – Apr 2025</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-contractor">Contractor</div>
+              <h3 class="tl-title">Profile & Welcome Systems</h3>
+              <p class="tl-preview">Complete rewrite of the profile service across 4 versions, plus a full onboarding flow — built, stabilized, then extracted to the shared library.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>Profile service rewrite (v0.0.1 → v0.0.4) — new meta patterns, cleaner data flow, consolidated sub-components</li>
+                    <li>Welcome onboarding component with autosave functionality</li>
+                    <li>Deleted legacy Connect and PublicView components, consolidating ~760 lines</li>
+                    <li>Extracted the stabilized Welcome component into the shared library</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">Profile data model was shared across Match, Messages, Welcome, and Guide — every change rippled through the entire app. Established the "build → stabilize → extract" pattern: develop in-app first, then move to the library once stable.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag blue">Angular 19</span><span class="tag blue">TypeScript</span><span class="tag">RxJS</span><span class="tag">SCSS</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Impact</div>
+                  <div class="tl-metric"><span class="tl-metric-val">4</span> versioned profile iterations</div>
+                  <div class="tl-metric"><span class="tl-metric-val">~760</span> lines consolidated</div>
+                  <div class="tl-metric">Build→Extract pattern established</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 8 -->
+      <div class="tl-node reveal" data-phase="8">
+        <div class="tl-marker"><span>8</span></div>
+        <div class="tl-content">
+          <div class="tl-date">May – Jun 2025</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-contractor">Contractor</div>
+              <h3 class="tl-title">Offline Capabilities & IndexedDB</h3>
+              <p class="tl-preview">Implemented client-aware offline data persistence using IndexedDB with schemas that adapt per consuming application.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>IndexedDB implementation with schemas differentiated by API context</li>
+                    <li>Offline data persistence strategy for the multi-tenant library</li>
+                    <li>Login popup form generator for streamlined auth flows</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">Each client app needed a different IndexedDB schema based on its API context — required dynamic database configuration that the library could adapt to at runtime without hardcoding any client-specific logic.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag blue">Angular 19</span><span class="tag blue">TypeScript</span><span class="tag">IndexedDB</span><span class="tag">RxJS</span><span class="tag green">PWA</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Impact</div>
+                  <div class="tl-metric">Offline-first capability</div>
+                  <div class="tl-metric">Multi-tenant DB schemas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 9 -->
+      <div class="tl-node reveal" data-phase="9">
+        <div class="tl-marker"><span>9</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Jun – Nov 2025</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-lead">Feature Lead</div>
+              <h3 class="tl-title">Push Notification System</h3>
+              <p class="tl-preview">Built a complete push notification system from scratch — web and native — with custom service worker extension, VAPID key management, and admin sending UI.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>Full push notification service with server-side subscription storage</li>
+                    <li>Custom service worker extending Angular's built-in SW — added push handling without ejecting from the Angular SW system</li>
+                    <li>Capacitor integration for native iOS/Android push notifications</li>
+                    <li>Admin panel UI for sending targeted notifications with custom title and message</li>
+                    <li>VAPID public key management and CDK overlay notification dropdown</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">Fixed a critical race condition where the login form completed before push notification VAPID keys were retrieved from the server, causing silent failures in notification registration. Also had to bridge two entirely different push APIs (Web Push + Capacitor native) into one unified flow.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag">Web Push API</span><span class="tag">Service Workers</span><span class="tag">Capacitor</span><span class="tag blue">Angular 19</span><span class="tag purple">Angular CDK</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Impact</div>
+                  <div class="tl-metric"><span class="tl-metric-val">4+</span> month build cycle</div>
+                  <div class="tl-metric">Web + native unified</div>
+                  <div class="tl-metric">Race condition fix shipped</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 10 -->
+      <div class="tl-node reveal" data-phase="10">
+        <div class="tl-marker"><span>10</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Aug – Oct 2025</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-lead">Feature Lead</div>
+              <h3 class="tl-title">Admin Panel & CMS</h3>
+              <p class="tl-preview">Architected the entire Client Management System — custom CDK overlay framework, Control Hub dashboard, user management, analytics, and a design token system.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>Custom Angular CDK overlay system — built dropdown and popup components from scratch instead of using a pre-built library</li>
+                    <li>Control Hub component — centralized admin dashboard with navigation</li>
+                    <li>User Management, User Actions, and User Analytics sub-modules</li>
+                    <li>Design token system (_tokens.scss, _mixins.scss) for consistent CMS styling</li>
+                    <li>Activation-based access control — user capabilities determined by activation level</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">Built a custom overlay framework using Angular CDK primitives when the existing component libraries didn't match the product's needs. Also introduced a new authorization paradigm where user capabilities are determined by activation access level rather than simple role flags.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag purple">Angular CDK</span><span class="tag">Chart.js</span><span class="tag">SCSS Tokens</span><span class="tag blue">Angular 19</span><span class="tag">RxJS</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Impact</div>
+                  <div class="tl-metric"><span class="tl-metric-val">443+</span> lines in Control Hub</div>
+                  <div class="tl-metric"><span class="tl-metric-val">~1,073</span> lines extracted to lib</div>
+                  <div class="tl-metric">Custom design token system</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 11 -->
+      <div class="tl-node reveal" data-phase="11">
+        <div class="tl-marker"><span>11</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Nov 2025 – Apr 2026</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-lead">Feature Lead</div>
+              <h3 class="tl-title">Gantt Chart & Time Recording</h3>
+              <p class="tl-preview">Took over another developer's initial branch and completely refactored it into a full project management suite — sprint visualization, task grid, and time recording across multiple MVPs.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I Built</div>
+                  <ul class="tl-list">
+                    <li>Took over and fully refactored the Gantt chart from another developer's feature branch</li>
+                    <li>Sprint visualization, project overview, and task grid — all as modular components</li>
+                    <li>Time recording service and list view for tracking work across projects</li>
+                    <li>Data input overlay system for task creation and editing</li>
+                    <li>Navigation bar for timeline view controls</li>
+                    <li>Iterated through multiple MVPs to account for different client needs</li>
+                  </ul>
+                  <div class="tl-kicker">Key Challenge</div>
+                  <p class="tl-detail-text">The third-party Gantt chart library didn't match the internal CRUD patterns — required building a custom adaptation layer. Went through multiple MVP cycles as requirements shifted for different potential clients, with the backend API contract still being finalized.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag">dhtmlx-gantt</span><span class="tag blue">Angular 19</span><span class="tag purple">Angular CDK</span><span class="tag">Luxon</span><span class="tag">SCSS</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Impact</div>
+                  <div class="tl-metric"><span class="tl-metric-val">5+</span> month build cycle</div>
+                  <div class="tl-metric"><span class="tl-metric-val">12+</span> sub-components</div>
+                  <div class="tl-metric">Multiple MVP iterations</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 12 -->
+      <div class="tl-node reveal" data-phase="12">
+        <div class="tl-marker"><span>12</span></div>
+        <div class="tl-content">
+          <div class="tl-date">Apr 2026 – Present</div>
+          <div class="tl-card">
+            <div class="tl-card-head">
+              <div class="tl-phase-badge tl-current">Current</div>
+              <h3 class="tl-title">AI Research & Architecture</h3>
+              <p class="tl-preview">Transitioning from feature development into AI research, implementation, and codebase-wide refactoring for security, scalability, and AI integration.</p>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-detail-grid">
+                <div class="tl-detail-main">
+                  <div class="tl-kicker">What I'm Doing</div>
+                  <ul class="tl-list">
+                    <li>Researching and implementing AI capabilities into the platform</li>
+                    <li>Refactoring the codebase to meet updated coding standards and security requirements</li>
+                    <li>Architecting for scalability — especially around AI-driven features</li>
+                  </ul>
+                  <div class="tl-kicker">Focus</div>
+                  <p class="tl-detail-text">Moving from building individual features to shaping the platform's technical direction — ensuring the architecture can support AI integration while maintaining the security and code quality standards the product needs at scale.</p>
+                </div>
+                <div class="tl-detail-side">
+                  <div class="tl-kicker">Tech</div>
+                  <div class="tags"><span class="tag purple">AI / LLM</span><span class="tag blue">Angular 19</span><span class="tag blue">TypeScript</span></div>
+                  <div class="tl-kicker" style="margin-top:.75rem">Scope</div>
+                  <div class="tl-metric">Platform-wide refactoring</div>
+                  <div class="tl-metric">Security hardening</div>
+                  <div class="tl-metric">AI architecture planning</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /tl-wrap -->
+  </section>
+
+  <!-- ── Patterns ── -->
+  <section class="il-patterns">
+    <div class="section-title reveal">Architectural Patterns I Introduced</div>
+    <div class="il-pattern-grid">
+      <div class="il-pattern-card reveal">
+        <div class="il-pattern-num">01</div>
+        <h4>Library-First Architecture</h4>
+        <p>Extracted reusable components into a shared Angular library — one codebase powers every client site.</p>
+      </div>
+      <div class="il-pattern-card reveal">
+        <div class="il-pattern-num">02</div>
+        <h4>Build → Stabilize → Extract</h4>
+        <p>Develop features in-app first, stabilize with real usage, then extract to the shared library once proven.</p>
+      </div>
+      <div class="il-pattern-card reveal">
+        <div class="il-pattern-num">03</div>
+        <h4>Runtime Configuration</h4>
+        <p>Moved from hardcoded frontend globals to backend-served config, enabling environment-agnostic deployments.</p>
+      </div>
+      <div class="il-pattern-card reveal">
+        <div class="il-pattern-num">04</div>
+        <h4>Versioned Service Refactoring</h4>
+        <p>Used semantic versioning for iterative service rewrites — documented each version's changes for maintainability.</p>
+      </div>
+    </div>
+  </section>
+
 </div>
-<footer><span class="footer-text">© 2026 Andrey Dermendzhiev</span><div class="footer-links"><a href="/projects/">Back to projects</a></div></footer>
+<footer>
+  <span class="footer-text">&copy; 2026 Andrey Dermendzhiev</span>
+  <div class="footer-links"><a href="/projects/">Back to projects</a><a href="/">Home</a></div>
+</footer>
 <script type="module" src="/assets/site.js"></script>
 </body>
 </html>

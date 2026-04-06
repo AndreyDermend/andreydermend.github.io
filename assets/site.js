@@ -34,3 +34,56 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
     });
   });
 });
+
+/* ── Timeline interactivity ── */
+const tlWrap=document.querySelector('.tl-wrap');
+if(tlWrap){
+  const nodes=tlWrap.querySelectorAll('.tl-node');
+  const lineFill=tlWrap.querySelector('.tl-line-fill');
+
+  // Click to expand/collapse
+  nodes.forEach(node=>{
+    const card=node.querySelector('.tl-card');
+    if(!card) return;
+    card.addEventListener('click',()=>{
+      const wasActive=node.classList.contains('tl-active');
+      // Close all others
+      nodes.forEach(n=>n.classList.remove('tl-active'));
+      // Toggle clicked
+      if(!wasActive){
+        node.classList.add('tl-active');
+        // Scroll card into view
+        setTimeout(()=>{
+          node.scrollIntoView({behavior:'smooth',block:'nearest'});
+        },100);
+      }
+    });
+  });
+
+  // Scroll-driven line fill & marker activation
+  function updateTimeline(){
+    if(!lineFill) return;
+    const wrapRect=tlWrap.getBoundingClientRect();
+    const wrapTop=wrapRect.top;
+    const wrapH=wrapRect.height;
+    const viewMid=window.innerHeight*0.5;
+
+    // Fill line based on scroll position
+    const progress=Math.min(Math.max((viewMid-wrapTop)/wrapH,0),1);
+    lineFill.style.height=progress*100+'%';
+
+    // Mark nodes as filled when scrolled past
+    nodes.forEach(node=>{
+      const nodeRect=node.getBoundingClientRect();
+      const nodeCenter=nodeRect.top+nodeRect.height*0.3;
+      if(nodeCenter<viewMid){
+        node.classList.add('tl-filled');
+      } else {
+        node.classList.remove('tl-filled');
+      }
+    });
+  }
+
+  window.addEventListener('scroll',updateTimeline,{passive:true});
+  updateTimeline();
+}
