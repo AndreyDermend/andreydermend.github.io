@@ -216,7 +216,7 @@ footer{border-top:1px solid var(--border);padding:1.5rem clamp(1.25rem,5vw,6rem)
 
 /* ── Timeline ── */
 .il-timeline-section{padding-top:3rem;padding-bottom:4rem}
-.tl-wrap{position:relative;padding:2rem 0}
+.tl-wrap{position:relative;padding:2rem clamp(.5rem,2vw,1.5rem)}
 .tl-line{
   position:absolute;left:50%;top:0;bottom:0;width:3px;
   background:var(--bg-3);border-radius:2px;
