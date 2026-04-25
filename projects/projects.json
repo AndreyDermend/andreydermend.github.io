@@ -7,9 +7,9 @@
     "page": "/projects/ilaunch.html"
   },
   {
-    "name": "CGI Capstone Project",
-    "about": "Agentic AI / contract workflow project page scaffolded for repo and visuals.",
-    "tags": ["AI", "LLM", "Python", "Capstone"],
+    "name": "LexiAgent — Deterministic Contract Drafting",
+    "about": "AI extracts fields with cited evidence; a deterministic assembler builds the contract from a vetted clause library. Runs on FastAPI, scales on Kubernetes, swaps Ollama ↔ Claude via env var.",
+    "tags": ["FastAPI", "Ollama", "Claude API", "RAG", "Kubernetes", "Docker", "Python"],
     "repo": "#",
     "page": "/projects/cgi-capstone.html"
   },

@@ -13,7 +13,7 @@ const ro=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecti
 document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 const tw=document.getElementById('typewriter');
 if (tw) {
-  const roles=['Full-Stack Software Engineer','Production PWA Builder','AI & Systems Projects','Angular · Python · TypeScript'];
+  const roles=['Full-Stack Software Engineer','Progressive Web App Developer','AI & Systems Projects','Angular · Python · TypeScript'];
   let ri=0,ci=0,del=false;
   function type(){
     const w=roles[ri];

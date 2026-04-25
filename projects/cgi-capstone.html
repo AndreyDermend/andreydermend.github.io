@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>CGI Capstone — AI Contract Drafting System</title>
+<title>LexiAgent — Deterministic Contract Drafting with AI Extraction</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
@@ -21,36 +21,40 @@
   <!-- ── Hero ── -->
   <section class="cap-hero reveal">
     <div class="cap-hero-text">
-      <div class="hero-chip"><div class="chip-dot"></div>CGI-Sponsored Capstone · University of Saint Joseph · 2025</div>
-      <h1 class="page-title">AI Contract Drafting System</h1>
-      <p class="page-subtitle">A controlled NDA drafting engine that combines deterministic clause assembly with an AI-powered intake layer. The system generates legally structured contracts from plain-English descriptions — no hallucinated legal language, no freeform text generation. Every clause traces back to a governed source.</p>
+      <div class="hero-chip"><div class="chip-dot"></div>CGI-Sponsored Capstone · University of Saint Joseph · 2026</div>
+      <h1 class="page-title">LexiAgent — Deterministic Contract Drafting</h1>
+      <p class="page-subtitle">A contract drafting system that confines AI to <strong>structured field extraction</strong> and assembles every contract from a vetted clause library. The model never writes legal text. Output is a professional DOCX with embedded source citations, plus an interactive HTML artifact where every value traces back to the user's own words. Runs as an OpenAI-compatible API behind Open WebUI, scales horizontally on Kubernetes, and swaps between local Ollama and the Claude API with one environment variable.</p>
       <div class="meta-row">
         <span class="badge wip">Capstone</span>
         <span class="badge purple">AI / LLM</span>
-        <span class="badge live">Working MVP</span>
+        <span class="badge live">Working System</span>
         <span class="badge collab">CGI Sponsored</span>
+      </div>
+      <div style="margin-top:1.25rem;display:flex;gap:.6rem;flex-wrap:wrap">
+        <a href="http://69.48.206.166:3000/" target="_blank" rel="noopener" class="btn-filled">Try the live demo →</a>
+        <span class="body-copy" style="font-size:.75rem;color:var(--text-2);align-self:center">Hosted on the course server. Open WebUI · select <strong>lexiagent</strong> from the model dropdown.</span>
       </div>
     </div>
     <div class="il-stats" style="margin-top:2rem">
       <div class="il-stat">
-        <div class="il-stat-val">2</div>
-        <div class="il-stat-label">NDA types supported</div>
+        <div class="il-stat-val">4</div>
+        <div class="il-stat-label">contract types supported</div>
       </div>
       <div class="il-stat">
-        <div class="il-stat-val">16</div>
-        <div class="il-stat-label">clause types</div>
+        <div class="il-stat-val">70</div>
+        <div class="il-stat-label">clauses across the library</div>
       </div>
       <div class="il-stat">
-        <div class="il-stat-val">0</div>
-        <div class="il-stat-label">unresolved placeholders</div>
+        <div class="il-stat-val">52/53</div>
+        <div class="il-stat-label">tests passing (1 skipped)</div>
       </div>
       <div class="il-stat">
-        <div class="il-stat-val">12</div>
-        <div class="il-stat-label">canonical fields</div>
+        <div class="il-stat-val">99.7%</div>
+        <div class="il-stat-label">avg extraction score</div>
       </div>
       <div class="il-stat">
-        <div class="il-stat-val">4/6</div>
-        <div class="il-stat-label">AI tests passing</div>
+        <div class="il-stat-val">9s</div>
+        <div class="il-stat-label">4 contracts, 4 K8s pods</div>
       </div>
       <div class="il-stat">
         <div class="il-stat-val">5</div>
@@ -64,7 +68,7 @@
     <div class="cap-role-grid">
       <div>
         <div class="kicker">My Role</div>
-        <p class="body-copy">I'm the sole developer on a five-person team. My four teammates are business students who handle the market research, business case, and presentation strategy. Everything technical — the data pipeline, clause library, assembler, config layer, AI integration, and testing — is my work.</p>
+        <p class="body-copy">I'm the sole developer on a five-person team. My four teammates are business students who handle market research, business case, and presentation strategy. Everything technical — data pipeline, clause library, RAG layer, deterministic assembler, FastAPI server, DOCX rendering, Docker + Kubernetes deployment, and the full test suite — is my work.</p>
       </div>
       <div>
         <div class="kicker">Team</div>
@@ -75,22 +79,22 @@
 
   <!-- ── The Problem ── -->
   <section id="problem">
-    <div class="section-title reveal">The Problem</div>
+    <div class="section-title reveal">The Technical Problem</div>
     <div class="cap-problem-grid">
       <div class="cap-problem-card reveal">
         <div class="cap-problem-icon" style="background:var(--orange-light);color:var(--orange)">1</div>
-        <h4>Legal drafting is slow</h4>
-        <p>NDAs are among the most common legal documents, yet they're still manually assembled. Attorneys spend ~64% of their time on document busywork — over 100 hours per month.</p>
+        <h4>Free-generation LLMs hallucinate</h4>
+        <p>Letting a model write contract text means hallucinated clauses, drifting field names, and untraceable language. Acceptable for prototypes — not for documents people sign.</p>
       </div>
       <div class="cap-problem-card reveal">
         <div class="cap-problem-icon" style="background:var(--purple-light);color:var(--purple)">2</div>
-        <h4>LLMs hallucinate legal text</h4>
-        <p>Free-generation with language models is risky for legal documents. Hallucinated clauses can have real legal consequences — a governed drafting approach is the safer path.</p>
+        <h4>One-shot extraction guesses</h4>
+        <p>Naive extractors fill missing fields with plausible-looking defaults. Without an evidence requirement, "we'll figure it out" becomes "the system invented a 5-year term."</p>
       </div>
       <div class="cap-problem-card reveal">
         <div class="cap-problem-icon" style="background:var(--blue-light);color:var(--blue)">3</div>
-        <h4>No reusable clause data</h4>
-        <p>Legal teams have no structured, auditable clause library. Every draft starts from scratch or from a loosely maintained Word template.</p>
+        <h4>No reusable, governed clause data</h4>
+        <p>Vendor templates exist as Word documents. There's no structured, typed, versioned clause library that an assembler can select against — you build that yourself.</p>
       </div>
     </div>
   </section>
@@ -98,52 +102,62 @@
   <!-- ── Architecture ── -->
   <section id="architecture">
     <div class="section-title reveal">Architecture</div>
-    <p class="reveal body-copy" style="margin-bottom:1.5rem;margin-top:-.75rem;max-width:860px">The system is designed in four layers — data, config, engine, and AI — so each layer can evolve independently. The deterministic backbone was built first; the AI layer was added on top without breaking the assembler.</p>
+    <p class="reveal body-copy" style="margin-bottom:1.5rem;margin-top:-.75rem;max-width:860px">Three zones, one rule: <strong>AI lives only in the extraction zone</strong>. Everything that ends up in the contract comes from the deterministic zone. The boundary between them is the schema — fields go in, clauses come out, and there's no path for model output to bypass the assembler.</p>
 
     <div class="cap-arch reveal">
       <div class="cap-arch-layer">
         <div class="cap-arch-label">Data Layer</div>
         <div class="cap-arch-items">
-          <div class="cap-arch-item">raw_ndas/<span>Mutual & Unilateral .docx</span></div>
+          <div class="cap-arch-item">raw templates<span>oneNDA, LawDepot, eForms, PandaDoc, FormSwift</span></div>
           <div class="cap-arch-arrow">→</div>
-          <div class="cap-arch-item">clean_text/<span>Noise removed, normalized</span></div>
+          <div class="cap-arch-item">clause extraction<span>Typed, versioned, source-attributed</span></div>
           <div class="cap-arch-arrow">→</div>
-          <div class="cap-arch-item">chunk_ready/<span>Clause boundaries tagged</span></div>
-          <div class="cap-arch-arrow">→</div>
-          <div class="cap-arch-item cap-arch-highlight">clause_library/<span>Governed JSONL + CSV records</span></div>
+          <div class="cap-arch-item cap-arch-highlight">clause_library/<span>JSONL text + .npz embeddings (nomic-embed-text)</span></div>
         </div>
       </div>
       <div class="cap-arch-layer">
         <div class="cap-arch-label">Config Layer</div>
         <div class="cap-arch-items">
-          <div class="cap-arch-item">questionnaire_schema.json<span>12 canonical fields</span></div>
-          <div class="cap-arch-item">assembly_order.json<span>Clause sequence per NDA type</span></div>
-          <div class="cap-arch-item">placeholder_mappings.json<span>Field → placeholder map</span></div>
-          <div class="cap-arch-item">normalized_clause_map.json<span>Cross-template normalization</span></div>
+          <div class="cap-arch-item">contract_registry.json<span>4 contract types → their schemas</span></div>
+          <div class="cap-arch-item">questionnaire_schema_*.json<span>Field definitions per type</span></div>
+          <div class="cap-arch-item">assembly_order_*.json<span>Clause sequence per type</span></div>
+          <div class="cap-arch-item">placeholder_mappings_*.json<span>Field → placeholder map</span></div>
         </div>
       </div>
       <div class="cap-arch-layer">
-        <div class="cap-arch-label">Drafting Engine</div>
+        <div class="cap-arch-label">AI Extraction Zone</div>
         <div class="cap-arch-items">
-          <div class="cap-arch-item">Select clauses<span>Filter by nda_type + clause_type</span></div>
+          <div class="cap-arch-item">Plain-English prompt<span>User describes the contract</span></div>
           <div class="cap-arch-arrow">→</div>
-          <div class="cap-arch-item">Fill placeholders<span>Algorithmic substitution, no LLM</span></div>
+          <div class="cap-arch-item">LLM extraction<span>Ollama qwen3:4b · or Claude API (env-var swap)</span></div>
           <div class="cap-arch-arrow">→</div>
-          <div class="cap-arch-item">Assemble contract<span>Fixed deterministic order</span></div>
+          <div class="cap-arch-item">Evidence verification<span>Every value cites the user's own words</span></div>
           <div class="cap-arch-arrow">→</div>
-          <div class="cap-arch-item cap-arch-highlight">Validate output<span>Check unresolved placeholders</span></div>
+          <div class="cap-arch-item">Follow-up loop<span>Numbered / labeled / line-by-line answer formats</span></div>
         </div>
       </div>
       <div class="cap-arch-layer">
-        <div class="cap-arch-label">AI Intake Layer</div>
+        <div class="cap-arch-label">Deterministic Zone</div>
         <div class="cap-arch-items">
-          <div class="cap-arch-item">Plain-English input<span>User describes the contract</span></div>
+          <div class="cap-arch-item">RAG clause selection<span>nomic-embed-text · always local</span></div>
           <div class="cap-arch-arrow">→</div>
-          <div class="cap-arch-item">LLM extraction<span>Map to canonical schema</span></div>
+          <div class="cap-arch-item">Placeholder fill<span>Algorithmic substitution, no LLM</span></div>
           <div class="cap-arch-arrow">→</div>
-          <div class="cap-arch-item">Evidence verification<span>Validate against user's words</span></div>
+          <div class="cap-arch-item">Contract assembly<span>Fixed order from assembly_order.json</span></div>
           <div class="cap-arch-arrow">→</div>
-          <div class="cap-arch-item">Follow-up questions<span>Only for missing required fields</span></div>
+          <div class="cap-arch-item cap-arch-highlight">DOCX + HTML artifact<span>Source citations + hover-evidence tooltips</span></div>
+        </div>
+      </div>
+      <div class="cap-arch-layer">
+        <div class="cap-arch-label">Serving Layer</div>
+        <div class="cap-arch-items">
+          <div class="cap-arch-item">FastAPI<span>OpenAI-compatible /v1/chat/completions</span></div>
+          <div class="cap-arch-arrow">→</div>
+          <div class="cap-arch-item">Open WebUI<span>Connected over private Docker network</span></div>
+          <div class="cap-arch-arrow">→</div>
+          <div class="cap-arch-item">Docker Compose<span>One-command local stack</span></div>
+          <div class="cap-arch-arrow">→</div>
+          <div class="cap-arch-item cap-arch-highlight">Kubernetes<span>4 stateless pods · horizontal scale POC</span></div>
         </div>
       </div>
     </div>
@@ -156,37 +170,72 @@
       <div class="cap-flow-step">
         <div class="cap-flow-num">1</div>
         <div>
-          <h4>User describes the contract</h4>
-          <p>Plain English: "We need a unilateral NDA between Acme Corp and Beta Ventures for 3 years under Connecticut law."</p>
+          <h4>User describes the contract in Open WebUI</h4>
+          <p>"We need a service agreement between GlobalTech Solutions and CleanPro Services for $3,500/month janitorial. Starting Feb 1, 2026. California law, mediation for disputes."</p>
         </div>
       </div>
       <div class="cap-flow-step">
         <div class="cap-flow-num">2</div>
         <div>
-          <h4>AI extracts canonical fields</h4>
-          <p>Ollama (Qwen 3 4B, running locally) maps the request into the fixed 12-field schema. Returns evidence for each extracted value.</p>
+          <h4>Provider-agnostic AI extraction</h4>
+          <p>FastAPI routes the prompt to whichever extractor is configured — local Ollama (<code>qwen3:4b</code>) by default, or Claude via API for throughput. The extractor maps the prompt into the contract type's questionnaire schema. Every extracted value carries a quoted evidence span.</p>
         </div>
       </div>
       <div class="cap-flow-step">
         <div class="cap-flow-num">3</div>
         <div>
-          <h4>Follow-up for missing fields</h4>
-          <p>The system asks only for what it couldn't confidently extract — entity details, email addresses, dispute resolution method.</p>
+          <h4>Follow-up loop for missing required fields</h4>
+          <p>If a field has no evidence, it becomes a follow-up question — never a guess. The parser handles three answer formats: numbered, labeled, and line-by-line. Coverage on the live test suite is <strong>99.7% after one follow-up turn</strong>.</p>
         </div>
       </div>
       <div class="cap-flow-step">
         <div class="cap-flow-num">4</div>
         <div>
-          <h4>Deterministic assembly</h4>
-          <p>Clauses selected from the governed library, placeholders filled algorithmically, contract assembled in fixed order. No LLM-generated legal text.</p>
+          <h4>RAG clause selection (always local)</h4>
+          <p>For multi-variant clause families (Consulting / Employment / Service), <code>nomic-embed-text</code> embeddings score variants against the verified field context. Embeddings are cached as <code>.npz</code> files alongside the clause library. NDA clauses are deterministic (single canonical variant per type).</p>
         </div>
       </div>
       <div class="cap-flow-step">
         <div class="cap-flow-num">5</div>
         <div>
-          <h4>Validated NDA output</h4>
-          <p>Complete contract draft with zero unresolved placeholders, plus a key terms summary and validation report.</p>
+          <h4>Deterministic assembly</h4>
+          <p>Selected clauses get their placeholders algorithmically filled from verified fields, then stitched in fixed order from <code>assembly_order_*.json</code>. No LLM call in the assembly path. Same inputs, same contract — byte-for-byte reproducible.</p>
         </div>
+      </div>
+      <div class="cap-flow-step">
+        <div class="cap-flow-num">6</div>
+        <div>
+          <h4>DOCX + HTML artifact, both auditable</h4>
+          <p>The DOCX is Times New Roman, with blue-highlighted user values, source citations on every clause, and a two-table audit appendix (clause sources + user input evidence). The chat response renders an interactive HTML artifact: hover any value to see the exact sentence it came from.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Three Pillars ── -->
+  <section id="pillars">
+    <div class="section-title reveal">Three Pillars</div>
+    <div class="cap-decisions-grid">
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header">
+          <span class="cap-decision-verdict cap-yes">Privacy</span>
+          <h4>Self-contained, local-first deployment</h4>
+        </div>
+        <p>API server, clause library, embeddings, and templates all run inside one isolated environment (Docker network or K8s namespace). Ollama runs on-device by default; Claude is opt-in. AI is confined to extraction — there's no path by which the model can inject text into the contract.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header">
+          <span class="cap-decision-verdict cap-yes">Reliability</span>
+          <h4>Evidence-gated, conservative, deterministic</h4>
+        </div>
+        <p>Every extracted value cites the user's own words. A missing field becomes a follow-up — never a guess. The system prefers three questions to one hallucination. Once fields are verified, template fill is reproducible byte-for-byte.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header">
+          <span class="cap-decision-verdict cap-yes">Scalability</span>
+          <h4>Stateless tier, horizontal scale, provider-agnostic</h4>
+        </div>
+        <p>Any pod can serve any request — containers are interchangeable. Demonstrated 4 pods serving 4 different contract types in 9 seconds wall time on Kubernetes. Swap Ollama ↔ Claude with one env variable, no code changes.</p>
       </div>
     </div>
   </section>
@@ -198,84 +247,125 @@
       <div class="cap-decision reveal">
         <div class="cap-decision-header">
           <span class="cap-decision-verdict cap-yes">Adopted</span>
-          <h4>Fixed canonical schema</h4>
+          <h4>AI confined to extraction only</h4>
         </div>
-        <p>The AI fills a fixed questionnaire schema — it does not generate or modify the schema at runtime. We tested agent-generated schemas and they caused field-name drift, missing required fields, and broken assembly.</p>
+        <p>The model never writes contract text. All clause language comes from vetted templates (oneNDA, LawDepot, eForms, PandaDoc, FormSwift). Extraction populates a fixed schema; the assembler does the rest. No path exists for hallucinated language to reach the document.</p>
       </div>
       <div class="cap-decision reveal">
         <div class="cap-decision-header">
           <span class="cap-decision-verdict cap-yes">Adopted</span>
-          <h4>Evidence-based extraction</h4>
+          <h4>Evidence-gated extraction with composite scoring</h4>
         </div>
-        <p>Every extracted value must have supporting evidence copied from the user's own words. If there's no evidence, the system asks a follow-up instead of guessing.</p>
+        <p>Each extraction test is scored by a weighted composite: <strong>50% follow-up coverage</strong>, 30% extraction accuracy, 20% no-hallucination (starts at 100%, –25% per invented field). Coverage is weighted highest because <em>asking when uncertain</em> is the safety behavior — the opposite of hallucination.</p>
       </div>
       <div class="cap-decision reveal">
         <div class="cap-decision-header">
           <span class="cap-decision-verdict cap-no">Rejected</span>
-          <h4>Agent-owned questionnaire</h4>
+          <h4>Agent-owned questionnaire schema</h4>
         </div>
-        <p>Letting the LLM generate the questionnaire structure caused schema drift, merged fields, and omitted fields the assembler needed. The agent fills the schema — it doesn't own it.</p>
+        <p>Letting the LLM define field structure caused field-name drift, merged fields, and dropped requireds. The agent fills the schema — it doesn't own it. Schemas live in <code>config/questionnaire_schema_*.json</code> and are versioned with the codebase.</p>
       </div>
       <div class="cap-decision reveal">
         <div class="cap-decision-header">
           <span class="cap-decision-verdict cap-yes">Adopted</span>
-          <h4>Deterministic-first architecture</h4>
+          <h4>OpenAI-compatible API surface</h4>
         </div>
-        <p>We built the drafting engine before adding AI. Every deterministic step is a clear handoff point for future AI orchestration — the agent builds on top, not the other way around.</p>
+        <p>FastAPI exposes <code>/v1/chat/completions</code> with SSE streaming and session isolation, so any OpenAI-client UI works out of the box — Open WebUI is the default, but the integration surface is standard.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header">
+          <span class="cap-decision-verdict cap-yes">Adopted</span>
+          <h4>Sticky routing for the demo, Redis as the production fix</h4>
+        </div>
+        <p>Sessions live in pod memory. To stay simple under K8s, the demo routes a user back to the same pod across follow-ups. For production, the documented next step is a shared session store (Redis) so any pod can pick up where another left off.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header">
+          <span class="cap-decision-verdict cap-yes">Adopted</span>
+          <h4>Embeddings always local</h4>
+        </div>
+        <p>Even when Claude is the extraction provider, RAG embeddings (<code>nomic-embed-text</code>) stay on-device. Clause selection never round-trips through a cloud provider — keeps the clause library and selection logic inside the deployment boundary.</p>
       </div>
     </div>
   </section>
 
-  <!-- ── AI Testing ── -->
+  <!-- ── Test Coverage ── -->
   <section id="testing">
-    <div class="section-title reveal">AI Intake Testing</div>
-    <p class="reveal body-copy" style="margin-bottom:1.5rem;margin-top:-.75rem;max-width:860px">We ran 6 test scenarios ranging from fully specified prompts to conversational/indirect language. The deterministic assembler passed every time — the variable was AI extraction quality.</p>
+    <div class="section-title reveal">Test Coverage</div>
+    <p class="reveal body-copy" style="margin-bottom:1.5rem;margin-top:-.75rem;max-width:860px"><strong>52 / 53 tests passing</strong>, 1 skipped pending optional bearer-token auth. Tests are layered — API contract, follow-up parser, edge cases, RAG metadata, DOCX validation, and extraction accuracy across all four contract types. Run against both Claude (API) and local Ollama (<code>qwen3:4b</code>) to verify provider parity.</p>
     <div class="cap-tests reveal">
       <div class="cap-test cap-pass">
-        <div class="cap-test-status">Pass</div>
+        <div class="cap-test-status">22 / 22</div>
         <div>
-          <strong>Test 1 — Fully specified unilateral</strong>
-          <p>All fields provided. AI extracted everything correctly, zero follow-ups needed.</p>
-        </div>
-      </div>
-      <div class="cap-test cap-partial">
-        <div class="cap-test-status">Partial</div>
-        <div>
-          <strong>Test 2 — Partially specified unilateral</strong>
-          <p>Missing entity details and emails. Follow-up behavior was inconsistent — sometimes asked correctly, sometimes tried to fill values.</p>
+          <strong>Extraction accuracy</strong>
+          <p>Fields correctly pulled from natural prompts across all 4 contract types. Per-type averages: NDA 100%, Consulting 100%, Employment 100%, Service Agreement 98.9%.</p>
         </div>
       </div>
       <div class="cap-test cap-pass">
-        <div class="cap-test-status">Pass</div>
+        <div class="cap-test-status">4 / 4</div>
         <div>
-          <strong>Test 3 — Role-based (implied unilateral)</strong>
-          <p>"Acme wants to disclose to Beta..." — AI correctly inferred unilateral type from context.</p>
+          <strong>End-to-end pipeline</strong>
+          <p>Prompt → verified answers → DOCX + HTML artifact, with no unresolved placeholders, for every contract type.</p>
         </div>
       </div>
       <div class="cap-test cap-pass">
-        <div class="cap-test-status">Pass</div>
+        <div class="cap-test-status">4 / 4</div>
         <div>
-          <strong>Test 4 — Fully specified mutual</strong>
-          <p>Mutual NDA path working end-to-end with all fields extracted.</p>
+          <strong>RAG clause selection</strong>
+          <p>Every clause in assembly order returns a result. <code>method="rag"</code> is correctly used for multi-variant families; deterministic for single-variant NDA clauses.</p>
         </div>
       </div>
       <div class="cap-test cap-pass">
-        <div class="cap-test-status">Pass</div>
+        <div class="cap-test-status">4 / 4</div>
         <div>
-          <strong>Test 5 — Partially specified mutual</strong>
-          <p>Missing fields correctly identified. Follow-up questions asked and answers accepted.</p>
+          <strong>Follow-up parsing</strong>
+          <p>Numbered, labeled, and line-by-line answer formats. Partial answers correctly leave the still-missing fields in the follow-up queue.</p>
         </div>
       </div>
-      <div class="cap-test cap-fail">
-        <div class="cap-test-status">Fail</div>
+      <div class="cap-test cap-pass">
+        <div class="cap-test-status">6 / 6</div>
         <div>
-          <strong>Test 6 — Conversational / indirect</strong>
-          <p>Extractor returned almost nothing from natural language. System fell back to asking nearly every question manually.</p>
+          <strong>Edge cases</strong>
+          <p>Empty payload triggers required follow-ups · injected unknown keys are filtered by schema validation · Unicode survives the pipeline · long values are preserved · missing-evidence values are rejected · <code>$0</code> / <code>0</code> numerics aren't dropped as falsey.</p>
+        </div>
+      </div>
+      <div class="cap-test cap-pass">
+        <div class="cap-test-status">4 / 4</div>
+        <div>
+          <strong>DOCX validation</strong>
+          <p>Title + Heading 1 structure, paragraph counts (NDA 56 / Consulting 47 / Employment 77 / Service 67), expected party names in body, no unresolved <code>{{PLACEHOLDER}}</code>, sidecar clause count matches the document.</p>
+        </div>
+      </div>
+      <div class="cap-test cap-pass">
+        <div class="cap-test-status">8 / 9</div>
+        <div>
+          <strong>API surface</strong>
+          <p><code>/health</code> · <code>/v1/models</code> · welcome response · unknown contract type · SSE streaming · OpenAI-compatible JSON · download 404 · session isolation · <em>auth test skipped pending bearer-token middleware.</em></p>
         </div>
       </div>
     </div>
-    <div class="reveal" style="margin-top:1rem">
-      <p class="body-copy"><strong>Conclusion:</strong> The deterministic assembler is not the bottleneck. The remaining challenge is AI extraction robustness on indirect and conversational prompts.</p>
+  </section>
+
+  <!-- ── Kubernetes ── -->
+  <section id="k8s">
+    <div class="section-title reveal">Kubernetes — Horizontal Scale POC</div>
+    <p class="reveal body-copy" style="margin-bottom:1.5rem;margin-top:-.75rem;max-width:860px">Four identical <code>lexiagent</code> pods served four different contract-type requests concurrently in a kind cluster. Full stack — Open WebUI, Kubernetes control plane, LexiAgent API — running locally inside one isolated environment.</p>
+    <div class="cap-stack-grid">
+      <div class="detail-card reveal">
+        <div class="kicker">Manifests</div>
+        <div class="tags"><span class="tag blue">Namespace</span><span class="tag blue">ConfigMap</span><span class="tag blue">Secret</span><span class="tag green">Deployment</span></div>
+        <p class="body-copy" style="margin-top:.75rem"><code>k8s/00-namespace</code> through <code>05-ollama</code>: namespace, config, secrets, LexiAgent deployment, Open WebUI, and an in-cluster Ollama option.</p>
+      </div>
+      <div class="detail-card reveal">
+        <div class="kicker">Wall-time result</div>
+        <div class="tags"><span class="tag green">9s parallel</span><span class="tag">~32s serial (est.)</span><span class="tag purple">3.6×</span></div>
+        <p class="body-copy" style="margin-top:.75rem">Four pods · four contract types · 9 seconds wall-clock. Stateless compute tier — any pod serves any request type.</p>
+      </div>
+      <div class="detail-card reveal">
+        <div class="kicker">Trade-off surfaced</div>
+        <div class="tags"><span class="tag orange">Sticky routing (demo)</span><span class="tag orange">Redis (production)</span></div>
+        <p class="body-copy" style="margin-top:.75rem">Follow-up answers must return to the pod that handled the first turn — sessions are in-memory. The production fix is a shared session store; documented as a known next step rather than hidden.</p>
+      </div>
     </div>
   </section>
 
@@ -285,25 +375,59 @@
     <div class="cap-stack-grid">
       <div class="detail-card reveal">
         <div class="kicker">Core Engine</div>
-        <div class="tags"><span class="tag blue">Python</span><span class="tag">JSON</span><span class="tag">JSONL</span></div>
-        <p class="body-copy" style="margin-top:.75rem">Deterministic assembler with clause selection, placeholder filling, and validation. Config-driven architecture — no hardcoded contract logic.</p>
+        <div class="tags"><span class="tag blue">Python</span><span class="tag blue">FastAPI</span><span class="tag">JSONL</span><span class="tag">python-docx</span></div>
+        <p class="body-copy" style="margin-top:.75rem">Deterministic assembler (<code>assemble_contract.py</code>), DOCX generator with embedded citations (<code>contract_docx.py</code>), HTML artifact renderer with hover tooltips (<code>contract_artifact.py</code>), OpenAI-compatible API (<code>api_server.py</code>).</p>
       </div>
       <div class="detail-card reveal">
-        <div class="kicker">AI Layer</div>
-        <div class="tags"><span class="tag purple">Ollama</span><span class="tag purple">Qwen 3 4B</span><span class="tag">Local inference</span></div>
-        <p class="body-copy" style="margin-top:.75rem">Runs entirely on local hardware (CPU-only). Structured JSON output, evidence-based extraction, schema-constrained prompting.</p>
+        <div class="kicker">AI Layer (provider-agnostic)</div>
+        <div class="tags"><span class="tag purple">Ollama</span><span class="tag purple">qwen3:4b</span><span class="tag purple">Claude API</span><span class="tag">env-var swap</span></div>
+        <p class="body-copy" style="margin-top:.75rem">Local-first by default; cloud opt-in. Provider abstraction in <code>llm_providers.py</code> — swap with <code>EXTRACTION_MODEL</code>. Structured JSON output, evidence-based extraction, schema-constrained prompting.</p>
       </div>
       <div class="detail-card reveal">
-        <div class="kicker">Data Pipeline</div>
-        <div class="tags"><span class="tag">OneNDA templates</span><span class="tag green">Governed records</span></div>
-        <p class="body-copy" style="margin-top:.75rem">Raw NDA documents cleaned, chunked, and structured into a governed clause library. Every record is typed, versioned, and traceable.</p>
+        <div class="kicker">RAG Layer</div>
+        <div class="tags"><span class="tag green">nomic-embed-text</span><span class="tag green">.npz cache</span><span class="tag">always local</span></div>
+        <p class="body-copy" style="margin-top:.75rem">Vector clause selection in <code>clause_rag.py</code>. Embeddings cached per clause library; deterministic fallback for single-variant clause families. Embeddings never leave the deployment regardless of extraction provider.</p>
       </div>
       <div class="detail-card reveal">
-        <div class="kicker">Future</div>
-        <div class="tags"><span class="tag orange">Streamlit UI</span><span class="tag orange">RAG</span><span class="tag orange">.docx export</span></div>
-        <p class="body-copy" style="margin-top:.75rem">Web UI, downloadable document output, EDGAR NDA expansion, risk analysis, and clause-by-clause plain-English explanations.</p>
+        <div class="kicker">Deployment</div>
+        <div class="tags"><span class="tag blue">Docker</span><span class="tag blue">Docker Compose</span><span class="tag green">Kubernetes (kind)</span><span class="tag">Open WebUI</span></div>
+        <p class="body-copy" style="margin-top:.75rem">One-command local stack via <code>docker compose up -d --build</code>. Six K8s manifests in <code>k8s/</code>. Open WebUI as the default user-facing interface, connected over a private Docker network.</p>
+      </div>
+      <div class="detail-card reveal">
+        <div class="kicker">Data</div>
+        <div class="tags"><span class="tag">oneNDA</span><span class="tag">LawDepot</span><span class="tag">eForms</span><span class="tag">PandaDoc</span><span class="tag">FormSwift</span></div>
+        <p class="body-copy" style="margin-top:.75rem">Curated clause library across five vetted template sources. Every clause is typed, versioned, and source-attributed. Citations propagate end-to-end into the DOCX audit appendix.</p>
+      </div>
+      <div class="detail-card reveal">
+        <div class="kicker">Test Harness</div>
+        <div class="tags"><span class="tag">pytest-style</span><span class="tag">fastapi.testclient</span><span class="tag">JSON reports</span></div>
+        <p class="body-copy" style="margin-top:.75rem">Layered suites in <code>app/test_api.py</code> and <code>app/test_extraction.py</code>: API, follow-up, edge, RAG, DOCX, end-to-end. Machine-readable results to <code>output/test_results_*.json</code>.</p>
       </div>
     </div>
+  </section>
+
+  <!-- ── Codebase Structure ── -->
+  <section id="codebase">
+    <div class="section-title reveal">Codebase Structure</div>
+    <p class="reveal body-copy" style="margin-bottom:1.5rem;margin-top:-.75rem;max-width:860px">Purpose-oriented layout — each directory serves one role in the pipeline. No cross-cutting concerns, no hidden coupling.</p>
+    <pre class="reveal" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:1.5rem;font-family:'Roboto Mono',monospace;font-size:.82rem;line-height:1.7;overflow-x:auto"><code>Capstone_project/
+├── app/                  Extraction pipeline, RAG, assembly, DOCX rendering,
+│                         API server, test suites
+│   ├── api_server.py            OpenAI-compatible /v1/chat/completions
+│   ├── assemble_contract.py     Deterministic contract assembler
+│   ├── clause_rag.py            RAG clause selection (nomic-embed-text)
+│   ├── contract_docx.py         DOCX generator with embedded citations
+│   ├── contract_artifact.py     HTML artifact with hover tooltips
+│   ├── llm_providers.py         Ollama / Claude provider abstraction
+│   ├── run_intake_loop.py       Extraction pipeline (library, no CLI)
+│   ├── test_api.py              FastAPI endpoint tests
+│   ├── test_extraction.py       Extraction, RAG, edge, DOCX suites
+│   └── test_claude_provider.py  Provider parity tests
+├── config/               Field schemas + assembly order per contract type
+├── data/                 Clause library (text + cached embeddings)
+├── k8s/                  Kubernetes manifests — horizontal scaling POC
+├── Dockerfile            Containerized deployment image
+└── docker-compose.yml    One-command local stack (LexiAgent + Open WebUI)</code></pre>
   </section>
 
   <!-- ── Current Status ── -->
@@ -313,25 +437,28 @@
       <div class="cap-status-col reveal">
         <div class="kicker" style="color:var(--green)">Working Now</div>
         <ul class="tl-list">
-          <li>End-to-end NDA generation (Mutual + Unilateral)</li>
-          <li>Governed clause library with 16 clause types</li>
-          <li>AI intake from plain-English descriptions</li>
-          <li>Evidence-based extraction with follow-up questions</li>
-          <li>Full validation — zero unresolved placeholders</li>
-          <li>Local LLM inference (no cloud dependency)</li>
-          <li>Structured output artifacts (7 output files per run)</li>
+          <li>End-to-end generation for 4 contract types (NDA mutual + unilateral, Consulting, Employment, Service)</li>
+          <li>Governed clause library across 5 template sources (oneNDA, LawDepot, eForms, PandaDoc, FormSwift)</li>
+          <li>OpenAI-compatible FastAPI server with SSE streaming and session isolation</li>
+          <li>Provider-agnostic extraction — Ollama (local) ↔ Claude (API) via one env variable</li>
+          <li>RAG clause selection with cached embeddings (always local)</li>
+          <li>Evidence-gated extraction with three-format follow-up parser</li>
+          <li>Professional DOCX output with source citations and audit appendix</li>
+          <li>Interactive HTML artifact with hover-to-evidence tooltips</li>
+          <li>Docker Compose stack (LexiAgent + Open WebUI)</li>
+          <li>Kubernetes POC: 4 pods, 4 contract types, 9s wall time</li>
+          <li>52 / 53 tests passing across 7 layered suites</li>
         </ul>
       </div>
       <div class="cap-status-col reveal">
-        <div class="kicker" style="color:var(--orange)">Next Steps</div>
+        <div class="kicker" style="color:var(--orange)">Documented Next Steps</div>
         <ul class="tl-list">
-          <li>Improve extraction robustness for conversational prompts</li>
-          <li>Benchmark smaller/faster models (Qwen 2.5 3B)</li>
-          <li>Two-pass extraction: extractor + reviewer/verifier</li>
-          <li>Normalize output phrasing artifacts</li>
-          <li>Web-based questionnaire UI (Streamlit)</li>
-          <li>Downloadable .docx output</li>
-          <li>Expand clause library with EDGAR NDAs</li>
+          <li>Bearer-token auth middleware in <code>api_server.py</code> (unskips the 1 reserved API test)</li>
+          <li>Redis-backed session store to replace sticky routing under K8s</li>
+          <li>Stronger context-shift signal in RAG for non-NDA clause families</li>
+          <li>Grammar normalization pass on user-supplied phrases (currently concatenated verbatim)</li>
+          <li>Expand clause library with EDGAR-sourced contracts</li>
+          <li>Live-model end-to-end benchmark capture for the appendix</li>
         </ul>
       </div>
     </div>
