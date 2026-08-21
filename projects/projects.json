@@ -7,6 +7,13 @@
     "page": "/projects/ilaunch.html"
   },
   {
+    "name": "AI Training Simulation Design",
+    "about": "Confidential internship (NDA). State-machine conversation design, a weighted multi-criteria rubric, and structured QA for an AI-driven training simulation. Employer and product details withheld.",
+    "tags": ["Conversational AI", "LLM Prompting", "State Machines", "Instructional Design"],
+    "repo": "#",
+    "page": "/projects/ai-training-simulation.html"
+  },
+  {
     "name": "LexiAgent — Deterministic Contract Drafting",
     "about": "AI extracts fields with cited evidence; a deterministic assembler builds the contract from a vetted clause library. Runs on FastAPI, scales on Kubernetes, swaps Ollama ↔ Claude via env var.",
     "tags": ["FastAPI", "Ollama", "Claude API", "RAG", "Kubernetes", "Docker", "Python"],

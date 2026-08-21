@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AI-Driven Training Simulation Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/assets/site.css"/>
+</head>
+<body>
+<div id="progress-bar"></div><div id="cursor"></div><div id="cursor-ring"></div>
+<nav>
+  <a href="/" class="nav-logo">Andrey<span>.</span></a>
+  <ul class="nav-links"><li><a href="/">Home</a></li><li><a href="/projects/" class="current">Projects</a></li><li><a href="/#contact">Contact</a></li></ul>
+  <a href="/#contact" class="nav-contact">Contact</a>
+</nav>
+<div class="wrapper page-shell">
+
+  <!-- ── Hero ── -->
+  <section class="cap-hero reveal">
+    <div class="cap-hero-text">
+      <div class="hero-chip"><div class="chip-dot"></div>Confidential Internship (NDA) · Summer 2026</div>
+      <h1 class="page-title">AI-Driven Training Simulation Design</h1>
+      <p class="page-subtitle">Details of the employer, product, and internal materials are under NDA, so this describes the design work in general terms. I designed and QA-tested a natural-language training scenario for a conversational-AI character: the character's behavior logic, a graph-based conversation design that works around a common LLM limitation, a weighted scoring rubric for grading trainee performance, and a structured testing process to validate it all before handoff.</p>
+      <div class="meta-row">
+        <span class="badge collab">Internship</span>
+        <span class="badge purple">AI / Conversational Design</span>
+        <span class="badge wip">Confidential</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Role context ── -->
+  <section class="cap-role reveal" style="padding-top:2rem;padding-bottom:0">
+    <div class="cap-role-grid">
+      <div>
+        <div class="kicker">My Role</div>
+        <p class="body-copy">I owned the design of the AI character and the conversation logic behind one training scenario: personality and speaking-style configuration, a topic-scoped knowledge base, and a state-machine narrative design. I then authored a weighted, multi-criteria scoring rubric for grading trainee performance, ran a structured QA pass comparing the character's actual responses against an expected-behavior spec, and documented the gap between the current proof of concept and the target production system for the rest of the team.</p>
+      </div>
+      <div>
+        <div class="kicker">Team</div>
+        <p class="body-copy" style="font-size:.82rem;color:var(--text-2)">A small cross-functional internship team: character/conversation design and QA (my focus), UI/UX design, and HR-domain research, working under a supervising manager with engineering support for the eventual production integration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The Problem ── -->
+  <section id="problem">
+    <div class="section-title reveal">The Design Problem</div>
+    <div class="cap-problem-grid">
+      <div class="cap-problem-card reveal">
+        <div class="cap-problem-icon" style="background:var(--orange-light);color:var(--orange)">1</div>
+        <h4>The model can't reliably recall the conversation</h4>
+        <p>Most conversational-AI platforms judge behavior turn by turn, not across the full conversation history. Any design that depends on the character "remembering" earlier turns tends to break down in practice.</p>
+      </div>
+      <div class="cap-problem-card reveal">
+        <div class="cap-problem-icon" style="background:var(--purple-light);color:var(--purple)">2</div>
+        <h4>A linear script kills replayability</h4>
+        <p>Scripted branches force every playthrough down the same path. The design needed to track a trainee's progress toward specific behaviors without asking the LLM to hold that state itself.</p>
+      </div>
+      <div class="cap-problem-card reveal">
+        <div class="cap-problem-icon" style="background:var(--blue-light);color:var(--blue)">3</div>
+        <h4>Covering the right topics isn't the same as handling them well</h4>
+        <p>A trainee can raise every required topic and still handle the conversation badly — or handle it well without ever naming the underlying issue. Scoring needed to separate <em>what</em> was said from <em>how</em> it was said.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Narrative Design ── -->
+  <section id="narrative">
+    <div class="section-title reveal">Conversation Design — A State Machine, Not a Script</div>
+    <p class="reveal body-copy" style="margin-bottom:1.5rem;margin-top:-.75rem;max-width:860px">The character's behavior is built as a graph rather than a top-to-bottom script. States that look like duplicates exist purely to count a trainee's progress across turns without asking the model to remember anything — a workaround for the turn-by-turn judgment constraint above. (Labels below are illustrative of the pattern, not the original scenario's exact terminology.)</p>
+    <div class="cap-arch reveal">
+      <div class="cap-arch-layer">
+        <div class="cap-arch-label">Entry</div>
+        <div class="cap-arch-items">
+          <div class="cap-arch-item cap-arch-highlight">Scenario start<span>Resets state, character opens in character</span></div>
+          <div class="cap-arch-arrow">→</div>
+          <div class="cap-arch-item">Baseline<span>Deflects; no issue raised yet</span></div>
+        </div>
+      </div>
+      <div class="cap-arch-layer">
+        <div class="cap-arch-label">Tracking (per turn)</div>
+        <div class="cap-arch-items">
+          <div class="cap-arch-item">Handled well<span>One well-communicated message logged</span></div>
+          <div class="cap-arch-item">Handled poorly<span>One poorly-communicated message logged</span></div>
+          <div class="cap-arch-item">Off-topic check<span>One in-character redirect on a tangent</span></div>
+        </div>
+      </div>
+      <div class="cap-arch-layer">
+        <div class="cap-arch-label">Resolution</div>
+        <div class="cap-arch-items">
+          <div class="cap-arch-item cap-arch-highlight">Partial opening<span>Reluctant, conditional flexibility — requires a concrete commitment, not just a closing-sounding question, to resolve</span></div>
+          <div class="cap-arch-item">Shut down<span>Hostile or repeated-tangent ending; closes in character</span></div>
+          <div class="cap-arch-arrow">→</div>
+          <div class="cap-arch-item">Debrief<span>Breaks character, signals the simulation has ended</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Rubric ── -->
+  <section id="rubric">
+    <div class="section-title reveal">Scoring — A Weighted, Multi-Criteria Rubric</div>
+    <p class="reveal body-copy" style="margin-bottom:1.5rem;margin-top:-.75rem;max-width:860px">Modeled on a Behaviorally Anchored Rating Scale: several weighted criteria combine into a single score, mixing topic-coverage criteria ("did the trainee raise the right issues") with behavioral-quality criteria ("did they communicate well under pressure"). One criterion acts as a hard floor — if the trainee fails a core leadership/communication behavior outright, the session fails automatically regardless of every other score, rather than letting a strong performance elsewhere average it out.</p>
+    <div class="cap-decisions-grid">
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-yes">Topic coverage</span><h4>Did the trainee raise the right issues?</h4></div>
+        <p>Scored on whether specific required topics were surfaced and connected to their broader organizational impact, not just mentioned in passing.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-no">Behavioral floor</span><h4>Did the trainee hold a firm, appropriate position?</h4></div>
+        <p>Backing down, avoiding the core issue, or capitulating under pushback is an automatic fail on this criterion — and on the whole session — independent of every other score.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-yes">Communication quality</span><h4>Was the tone constructive under pressure?</h4></div>
+        <p>Fact-based, non-accusatory framing throughout scores higher than ultimatums or reactive escalation when the other party pushes back.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-yes">Procedural correctness</span><h4>Did the trainee follow the right process?</h4></div>
+        <p>Confidentiality maintained, policy-framed rather than personal-opinion language, a specific expectation set, consequences stated where appropriate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── QA Testing ── -->
+  <section id="testing">
+    <div class="section-title reveal">QA Testing</div>
+    <p class="reveal body-copy" style="margin-bottom:1.5rem;margin-top:-.75rem;max-width:860px">Each topic area was tested against multiple hand-written prompts — spanning a good, middling, and poor communication approach — with an expected response path defined in advance, then compared turn by turn against the character's actual output. The pass rate across the full test suite was very high; one edge case in a lower-priority topic area didn't progress as expected, which I flagged as a real gap rather than a scoring ambiguity.</p>
+    <div class="cap-tests reveal">
+      <div class="cap-test cap-pass">
+        <div class="cap-test-status">Pass</div>
+        <div><strong>Core behavioral topics</strong><p>Good, middling, and poor communication approaches to the same underlying issue consistently routed to their expected response path.</p></div>
+      </div>
+      <div class="cap-test cap-pass">
+        <div class="cap-test-status">Pass</div>
+        <div><strong>Escalation &amp; de-escalation arcs</strong><p>Sustained good communication measurably softened the character over several turns; sustained poor communication reached a hard shutdown faster; a single recovery message only partially re-engaged the character rather than fully resetting the arc.</p></div>
+      </div>
+      <div class="cap-test cap-pass">
+        <div class="cap-test-status">Pass</div>
+        <div><strong>Off-topic &amp; drift handling</strong><p>A single tangent gets one in-character redirect; a second consecutive tangent correctly triggered a hard shutdown and ended the session.</p></div>
+      </div>
+      <div class="cap-test cap-pass">
+        <div class="cap-test-status">Pass</div>
+        <div><strong>Edge cases</strong><p>Confirmed a deliberately-unpatched "bargaining" trap (the character softens for an incentive rather than firm policy — a real behavioral trap, not a bug), that a closing-sounding question alone doesn't end the scenario, and that the character never breaks its persona to thank the trainee.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Key Decisions ── -->
+  <section id="decisions">
+    <div class="section-title reveal">Key Design Decisions</div>
+    <div class="cap-decisions-grid">
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-yes">Adopted</span><h4>Dual-AI: one plays the character, one scores it</h4></div>
+        <p>Asking a single model to stay in character in real time and objectively grade the conversation at the same time degrades both jobs — so scoring is deferred entirely to a separate post-session evaluation pass over the transcript.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-yes">Adopted</span><h4>Topic coverage removed from real-time judgment</h4></div>
+        <p>Whether all required topics were raised is judged accurately after the fact, not asked of the in-conversation character model — which also keeps the character from steering the trainee toward "correct" phrases.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-yes">Adopted</span><h4>Progress indicator shows graph state, not a topic checklist</h4></div>
+        <p>Surfacing the actual grading criteria in the UI would recreate the exact problem the conversation design avoids: the character (or the UI) coaching the trainee on what to say.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-no">Left unfixed, deliberately</span><h4>A known "bargaining" trap</h4></div>
+        <p>The character can be persuaded with an incentive rather than firm, policy-based leadership — a deliberately realistic weak spot to test for, not a bug. Kept as a scoring trap rather than patched, and confirmed by QA to still trigger correctly.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-yes">Adopted</span><h4>Stable, non-flagship model tier</h4></div>
+        <p>Character conversations run on a stable, non-preview model rather than anything tagged "latest" or "beta," to conserve limited usage quota and keep behavior reproducible during testing.</p>
+      </div>
+      <div class="cap-decision reveal">
+        <div class="cap-decision-header"><span class="cap-decision-verdict cap-yes">Adopted</span><h4>Escalation modeled as one coupled dimension</h4></div>
+        <p>Modeled as distance from a center point rather than two separate meters, so "how much patience is left" automatically depends on "how escalated the character is" without manually tuned per-level thresholds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Status ── -->
+  <section id="status">
+    <div class="section-title reveal">Outcome</div>
+    <div class="cap-status-grid">
+      <div class="cap-status-col reveal">
+        <div class="kicker" style="color:var(--green)">Delivered</div>
+        <ul class="tl-list">
+          <li>Character and narrative-design graph validated end to end on the conversational-AI platform</li>
+          <li>Weighted, multi-criteria scoring rubric with a hard behavioral floor condition</li>
+          <li>A structured QA suite across multiple topic areas, with a near-complete pass rate against expected behavior</li>
+          <li>A written architecture assessment separating the working proof of concept from the target production system</li>
+          <li>Progress presented to the team's stakeholders at a project check-in</li>
+        </ul>
+      </div>
+      <div class="cap-status-col reveal">
+        <div class="kicker" style="color:var(--orange)">Documented Next Steps</div>
+        <ul class="tl-list">
+          <li>Fix the one edge case that didn't progress as expected under a well-communicated prompt</li>
+          <li>Decide whether the off-topic redirect should preserve prior progress instead of always resetting</li>
+          <li>Build the post-session evaluation model that scores transcripts against the rubric</li>
+          <li>Front-end and backend integration, pending platform access</li>
+          <li>Extend the same design pattern to additional planned training scenarios</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</div>
+<footer>
+  <span class="footer-text">&copy; 2026 Andrey Dermendzhiev</span>
+  <div class="footer-links"><a href="/projects/">Back to projects</a><a href="/">Home</a></div>
+</footer>
+<script type="module" src="/assets/site.js"></script>
+</body>
+</html>
