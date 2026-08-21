@@ -1,10 +1,11 @@
 [
   {
     "name": "iLaunch.online",
-    "about": "Production PWA used by six affiliates; featured full-stack case study.",
+    "about": "Production Progressive Web App (PWA) used by six affiliates; featured full-stack case study.",
     "tags": ["Angular", "TypeScript", "PHP", "MySQL", "PWA"],
     "repo": "#",
-    "page": "/projects/ilaunch.html"
+    "page": "/projects/ilaunch.html",
+    "demo": "https://ilaunch.online/"
   },
   {
     "name": "AI Training Simulation Design",
@@ -18,7 +19,8 @@
     "about": "AI extracts fields with cited evidence; a deterministic assembler builds the contract from a vetted clause library. Runs on FastAPI, scales on Kubernetes, swaps Ollama ↔ Claude via env var.",
     "tags": ["FastAPI", "Ollama", "Claude API", "RAG", "Kubernetes", "Docker", "Python"],
     "repo": "#",
-    "page": "/projects/cgi-capstone.html"
+    "page": "/projects/cgi-capstone.html",
+    "demo": "http://69.48.206.166:3000/"
   },
   {
     "name": "Traffic Flow Simulation",
